@@ -50,7 +50,7 @@ window.MAVERICK_PRODUCTS = [
       '<p class="product-blurb">' + p.blurb + "</p>" +
       '<div class="product-foot">' +
       '<span class="product-price">' + money(p.price) + "</span>" +
-      '<button type="button" class="btn btn--dark buy-btn snipcart-add-item"' +
+      '<button type="button" class="btn btn--accent buy-btn snipcart-add-item"' +
       ' data-item-id="' + p.id + '"' +
       ' data-item-name="' + p.name + '"' +
       ' data-item-price="' + p.price.toFixed(2) + '"' +
