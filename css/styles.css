@@ -84,14 +84,8 @@ h1 { font-weight: 800; }
 }
 .header-inner { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 
-.brand { display: inline-flex; align-items: center; gap: 11px; }
-.brand-mark { display: block; width: 34px; height: 34px; overflow: hidden; flex: none; }
-.brand-mark img { width: 235%; height: 235%; margin: -68% 0 0 -68%; max-width: none; }
-.brand-text {
-  font-family: var(--mono); font-weight: 700; font-size: 0.82rem; line-height: 1.1;
-  text-transform: uppercase; letter-spacing: 0.12em;
-}
-.brand-text span { display: block; color: var(--text-dim); }
+.brand { display: inline-flex; align-items: center; }
+.brand-logo { height: 48px; width: auto; display: block; }
 
 .main-nav { display: flex; gap: 30px; margin-left: auto; }
 .main-nav a {
