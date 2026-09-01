@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maverick Socks — Performance Grip Socks</title>
+  <meta name="description" content="Maverick Socks — sports performance grip socks engineered for traction, comfort and durability. Grip inside and out, mesh air channels, blister protection." />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Maverick Socks — Performance Grip Socks" />
+  <meta property="og:description" content="Grip socks engineered for traction, comfort and durability. Grip inside and out, mesh air channels, blister protection." />
+  <meta property="og:image" content="assets/product-3pack.jpg" />
+
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet" />
+
+  <!-- Snipcart (stylesheet + script are injected by js/main.js once a real API key is set) -->
+  <link rel="preconnect" href="https://app.snipcart.com" />
+  <link rel="preconnect" href="https://cdn.snipcart.com" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#products">Skip to shop</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Maverick Socks home">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="assets/logo-mark-white.png" alt="" />
+        </span>
+        <span class="brand-text">Maverick Socks</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <a href="#products">Shop</a>
+        <a href="#features">Technology</a>
+        <a href="#sizing">Sizing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="cart-btn snipcart-checkout" type="button" aria-label="Open cart">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M7 4h-.7L5.4 2H2v2h2.1l3.6 8.6L6.2 15A2 2 0 0 0 8 18h11v-2H8.4l.9-1.7h7.4a2 2 0 0 0 1.8-1.1l3.1-6.2A1 1 0 0 0 22.7 4H7Zm0 15a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 19Zm10 0a2 2 0 1 0 .001 4.001A2 2 0 0 0 17 19Z"/>
+          </svg>
+          <span class="cart-count snipcart-items-count">0</span>
+        </button>
+        <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <a href="#products">Shop</a>
+      <a href="#features">Technology</a>
+      <a href="#sizing">Sizing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Sports Performance Grip Socks</p>
+          <h1>Lock in.<br />Play&nbsp;faster.</h1>
+          <p class="lede">
+            Maverick grip socks put contact points on both sides of the sock — so your foot
+            stays planted in the boot and the boot stays planted on the pitch.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn--primary" href="#products">Shop grip socks</a>
+            <a class="btn btn--ghost" href="#features">See the tech</a>
+          </div>
+          <ul class="hero-points">
+            <li>Grip inside &amp; out</li>
+            <li>Mesh air channels</li>
+            <li>Reinforced toe &amp; sole</li>
+          </ul>
+        </div>
+        <div class="hero-media">
+          <img src="assets/hero-socks.jpg" alt="A pair of white Maverick grip socks, one standing to show the patterned grip sole" width="900" height="600" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Football</span><span>&bull;</span><span>Futsal</span><span>&bull;</span><span>Basketball</span><span>&bull;</span><span>Rugby</span><span>&bull;</span><span>Training</span><span>&bull;</span><span>Netball</span><span>&bull;</span>
+        <span>Football</span><span>&bull;</span><span>Futsal</span><span>&bull;</span><span>Basketball</span><span>&bull;</span><span>Rugby</span><span>&bull;</span><span>Training</span><span>&bull;</span><span>Netball</span><span>&bull;</span>
+      </div>
+    </div>
+
+    <!-- Products -->
+    <section class="section" id="products">
+      <div class="container">
+        <header class="section-head">
+          <h2>Shop the range</h2>
+          <p>One-size fit, UK 5&ndash;13. Free UK delivery over &pound;30.</p>
+        </header>
+
+        <div class="product-grid" id="productGrid">
+          <!-- cards injected by js/products.js -->
+        </div>
+
+        <p class="store-note" id="storeNote" hidden>
+          <strong>Checkout isn&rsquo;t connected yet.</strong>
+          Add your Snipcart public API key in <code>index.html</code> to take live payments &mdash; see the README.
+        </p>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section section--dark" id="features">
+      <div class="container">
+        <header class="section-head section-head--light">
+          <h2>Engineered to grip</h2>
+          <p>Every detail on a Maverick sock is there to keep you connected to the game.</p>
+        </header>
+
+        <div class="feature-grid">
+          <article class="feature">
+            <h3>Grip inside and out</h3>
+            <p>Frequent grip contact points on both sides of the sock increase traction between foot, sock and boot.</p>
+          </article>
+          <article class="feature">
+            <h3>Mesh air channels</h3>
+            <p>Breathable mesh zones move moisture away from the foot and keep you comfortable for longer.</p>
+          </article>
+          <article class="feature">
+            <h3>High-quality grips</h3>
+            <p>Strong silicone grips that bite harder as the socks warm up with your feet during play.</p>
+          </article>
+          <article class="feature">
+            <h3>Blister protection</h3>
+            <p>A thicker sole and reinforced toe cut friction to prevent blisters and add cushioning.</p>
+          </article>
+          <article class="feature">
+            <h3>Left &amp; right anatomy</h3>
+            <p>Each sock is shaped for an individual foot for a closer, more locked-in fit.</p>
+          </article>
+          <article class="feature">
+            <h3>Built to last</h3>
+            <p>High-quality yarns hold grip and shape wash after wash, so performance lasts.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Split -->
+    <section class="split">
+      <div class="split-media">
+        <img src="assets/socks-black-white.jpg" alt="Black and white Maverick grip socks side by side showing the logo cuff and grip sole" width="1000" height="667" />
+      </div>
+      <div class="split-copy">
+        <p class="eyebrow">Black or white</p>
+        <h2>Same grip. Your colour.</h2>
+        <p>
+          Woven logo cuff, all-over wing motif on the leg, and a full-contact grip sole.
+          Pick a colour or grab the mixed 3-pack and rotate them through the week.
+        </p>
+        <a class="btn btn--primary" href="#products">Choose a pair</a>
+      </div>
+    </section>
+
+    <!-- Sizing -->
+    <section class="section" id="sizing">
+      <div class="container narrow">
+        <header class="section-head">
+          <h2>Sizing</h2>
+          <p>Maverick grip socks are a one-size stretch fit that covers most adult feet.</p>
+        </header>
+        <table class="size-table">
+          <thead>
+            <tr><th>Region</th><th>Fits sizes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>UK</td><td>5 &ndash; 13</td></tr>
+            <tr><td>US</td><td>5 &ndash; 14</td></tr>
+            <tr><td>EU</td><td>37.5 &ndash; 48</td></tr>
+          </tbody>
+        </table>
+        <p class="fine">Between sizes or after a snugger fit? Size advice is on every product and in the FAQ below.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--muted" id="faq">
+      <div class="container narrow">
+        <header class="section-head">
+          <h2>FAQ</h2>
+        </header>
+        <div class="faq">
+          <details>
+            <summary>How do grip socks work?</summary>
+            <p>Silicone pads on the inside of the sock stop your foot sliding around inside the boot, while pads on the outside grip the boot&rsquo;s footbed. The result is less slip, faster changes of direction and better power transfer.</p>
+          </details>
+          <details>
+            <summary>Can I wear them with any boots or trainers?</summary>
+            <p>Yes. They&rsquo;re designed to be worn instead of or underneath your normal team sock with football boots, futsal shoes, trainers and court shoes.</p>
+          </details>
+          <details>
+            <summary>How should I wash them?</summary>
+            <p>Machine wash cold at 30&deg;C inside out, do not iron the grips, and air dry. Avoid fabric softener so the grips stay tacky.</p>
+          </details>
+          <details>
+            <summary>What is delivery and returns?</summary>
+            <p>UK delivery is a flat rate with free shipping over &pound;30. Unworn socks in original packaging can be returned within 30 days. Full details are shown at checkout.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+      <div class="container narrow">
+        <h2>Get 10% off your first pair</h2>
+        <p>Join the list for drops, restocks and the occasional grip-sock science lesson.</p>
+        <form class="newsletter-form" action="https://formspree.io/f/your-form-id" method="POST">
+          <label class="sr-only" for="email">Email address</label>
+          <input id="email" type="email" name="email" placeholder="you@email.com" required />
+          <button class="btn btn--primary" type="submit">Sign up</button>
+        </form>
+        <p class="fine">No spam. Unsubscribe any time.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo-wordmark-white.png" alt="Maverick Socks" width="180" />
+        <p>Sports performance grip socks. Designed in the UK.</p>
+      </div>
+      <nav aria-label="Footer">
+        <h3>Shop</h3>
+        <a href="#products">Grip socks</a>
+        <a href="#products">3-pack bundle</a>
+        <a href="#sizing">Sizing</a>
+      </nav>
+      <nav aria-label="Help">
+        <h3>Help</h3>
+        <a href="#faq">FAQ</a>
+        <a href="#faq">Delivery &amp; returns</a>
+        <a href="mailto:hello@mavericksocks.com">Contact</a>
+      </nav>
+      <div class="footer-social">
+        <h3>Follow</h3>
+        <a href="https://instagram.com/" rel="noopener" target="_blank">Instagram</a>
+        <a href="https://tiktok.com/" rel="noopener" target="_blank">TikTok</a>
+        <a href="https://twitter.com/" rel="noopener" target="_blank">X / Twitter</a>
+      </div>
+    </div>
+    <div class="container footer-legal">
+      <p>&copy; <span id="year">2026</span> Maverick Socks. All rights reserved.</p>
+      <p>Product photography and prices are placeholders until you set your own.</p>
+    </div>
+  </footer>
+
+  <!-- Snipcart mount: replace data-api-key with your public key from the Snipcart dashboard.
+       js/main.js loads the Snipcart stylesheet + script automatically once the key is real. -->
+  <div
+    hidden
+    id="snipcart"
+    data-api-key="YOUR_SNIPCART_PUBLIC_API_KEY"
+    data-config-modal-style="side"
+    data-currency="gbp"
+  ></div>
+
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
