@@ -191,11 +191,11 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
 .feature-band .headline { max-width: 18ch; }
 
 /* ---------- The Technology: interactive diagram ---------- */
-.tech-figure { max-width: 900px; margin: 6px auto 0; }
+.tech-figure { max-width: 620px; margin: 6px auto 0; }
 .tech-svg { width: 100%; height: auto; display: block; overflow: visible; }
-.tech-lines line { stroke: var(--ink); stroke-width: 0.35; opacity: 0.5; }
+.tech-lines line { stroke: var(--ink); stroke-width: 0.4; opacity: 0.5; }
 .tech-lbl {
-  font-family: var(--sans); font-size: 4.1px; font-weight: 600; letter-spacing: 0.02em;
+  font-family: var(--sans); font-size: 4.4px; font-weight: 600; letter-spacing: 0.02em;
   text-transform: uppercase; fill: var(--ink-dim); cursor: pointer;
   transition: fill 0.15s var(--ease);
 }
@@ -207,7 +207,7 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
   transition: fill 0.15s var(--ease), stroke 0.15s var(--ease);
 }
 .tech-pin .pnum {
-  font-family: var(--sans); font-size: 3.4px; font-weight: 700; fill: var(--ink);
+  font-family: var(--sans); font-size: 4px; font-weight: 700; fill: var(--ink);
   text-anchor: middle; dominant-baseline: central; pointer-events: none;
   transition: fill 0.15s var(--ease);
 }
@@ -328,11 +328,11 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
   .section { padding: 52px 0; }
   .tech-grid { grid-template-columns: 1fr; }
   .tech-lbl, .tech-lines { display: none; }
-  .tech-scene { transform: scale(1.28); transform-origin: 100px 30px; transform-box: view-box; }
-  .tech-figure { max-width: 420px; }
-  .tech-pin .dot { r: 2.1; stroke-width: 0.9; }
-  .tech-pin .pnum { font-size: 2.8px; }
-  .tech-pin .hit { r: 7; }
+  .tech-scene { transform: scale(1.05); transform-origin: 100px 82px; transform-box: view-box; }
+  .tech-figure { max-width: 380px; }
+  .tech-pin .dot { r: 2.6; stroke-width: 1; }
+  .tech-pin .pnum { font-size: 3.6px; }
+  .tech-pin .hit { r: 8; }
   .footer-grid { grid-template-columns: 1fr; }
   .cart-btn span:first-child { display: none; }
 }

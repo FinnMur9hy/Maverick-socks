@@ -34,8 +34,6 @@
     if (!fig || !detail) return;
 
     var data = [
-      { t: "Woven-in branding", d: "“Maverick” and the wing mark are knitted into the yarn, not printed on top — so they never crack, peel or wash out." },
-      { t: "Signature wing motif", d: "The repeating wing runs down the leg and scales up the sock — instantly recognisable on the pitch." },
       { t: "Breathable mid-foot knit", d: "Open mesh channels through the arch move sweat out and drop the temperature, so feet stay dry and blister-free." },
       { t: "Grip pads, inside & out", d: "Double-stitched silicone ‘M’ pads on both faces of the sock — your foot locks to the sock, the sock locks to the boot." },
       { t: "Cushioned thick heel", d: "A denser, padded heel soaks up impact and stops the sock slipping down through 90 minutes and extra time." },
