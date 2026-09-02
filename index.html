@@ -73,15 +73,22 @@
 
   <main>
     <!-- Hero -->
-    <section class="hero">
-      <img class="hero-bg" src="assets/hero.jpg" alt="" />
+    <section class="hero" data-hero>
+      <div class="hero-slides">
+        <img class="hero-bg is-active" src="assets/hero-1.jpg" alt="" />
+        <img class="hero-bg" src="assets/hero-2.jpg" alt="" loading="lazy" />
+      </div>
       <div class="hero-grad"></div>
       <div class="container hero-inner">
         <h1 class="headline headline--light">
           <em>Stay planted</em> <b>when it counts<span class="dot">.</span></b>
         </h1>
-        <p class="hero-sub">A grip system for football, futsal and court &mdash; contact points inside and out.</p>
+        <p class="hero-sub">The highest quality grip sock on the market. Designed to optimise performance. <span class="hashtag">#BeAMaverick</span></p>
         <a class="btn btn--light" href="#range">Shop grip socks</a>
+      </div>
+      <div class="hero-dots" aria-hidden="true">
+        <button type="button" class="is-active" data-slide="0"></button>
+        <button type="button" data-slide="1"></button>
       </div>
     </section>
 

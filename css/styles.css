@@ -117,11 +117,17 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
 
 /* ---------- Hero ---------- */
 .hero { position: relative; min-height: min(82vh, 720px); display: flex; align-items: flex-end; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.hero-grad { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.2) 45%, rgba(0,0,0,0.15) 100%); }
-.hero-inner { position: relative; padding-bottom: 56px; padding-top: 40px; }
+.hero-slides { position: absolute; inset: 0; }
+.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.9s var(--ease); }
+.hero-bg.is-active { opacity: 1; }
+.hero-grad { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.4) 48%, rgba(0,0,0,0.34) 100%); }
+.hero-inner { position: relative; padding-bottom: 60px; padding-top: 40px; }
 .hero .headline { max-width: 16ch; margin-bottom: 20px; }
-.hero-sub { color: rgba(255,255,255,0.9); font-size: 1.05rem; max-width: 42ch; margin: 0 0 26px; }
+.hero-sub { color: rgba(255,255,255,0.92); font-size: 1.05rem; max-width: 44ch; margin: 0 0 26px; }
+.hero-sub .hashtag { color: var(--accent); font-weight: 600; white-space: nowrap; }
+.hero-dots { position: absolute; right: 28px; bottom: 24px; display: flex; gap: 8px; z-index: 2; }
+.hero-dots button { width: 8px; height: 8px; border-radius: 999px; border: 0; padding: 0; background: rgba(255,255,255,0.4); cursor: pointer; transition: background-color 0.2s var(--ease), width 0.2s var(--ease); }
+.hero-dots button.is-active { background: #fff; width: 22px; }
 
 /* ---------- Sections ---------- */
 .section { padding: 74px 0; }

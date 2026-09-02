@@ -5,6 +5,28 @@
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
+  // Hero slideshow
+  (function () {
+    var hero = document.querySelector("[data-hero]");
+    if (!hero) return;
+    var slides = hero.querySelectorAll(".hero-bg");
+    var dots = hero.querySelectorAll(".hero-dots button");
+    if (slides.length < 2) return;
+    var i = 0;
+    var go = function (n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.classList.toggle("is-active", k === i); });
+      dots.forEach(function (d, k) { d.classList.toggle("is-active", k === i); });
+    };
+    dots.forEach(function (d, k) { d.addEventListener("click", function () { go(k); restart(); }); });
+    var timer;
+    var restart = function () {
+      window.clearInterval(timer);
+      timer = window.setInterval(function () { go(i + 1); }, 5500);
+    };
+    restart();
+  })();
+
   // Product carousel: arrows + progress bar
   document.querySelectorAll("[data-carousel]").forEach(function (wrap) {
     var track = wrap.querySelector(".carousel-track");

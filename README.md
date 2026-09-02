@@ -58,10 +58,10 @@ same name (or update the path in `index.html` / `products.js`):
 
 | File | Where it shows |
 |---|---|
-| `hero.jpg` | full-bleed homepage hero (swap for the pitch/lifestyle shot) |
-| `product-white.jpg` / `product-black.jpg` / `product-3pack.jpg` | shop cards |
-| `story.jpg` | Our Story section |
-| `logo-mark-black.png` / `logo-mark-white.png` | header / footer logo |
+| `hero-1.jpg` / `hero-2.jpg` | homepage hero slideshow (crossfades every ~5.5s) |
+| `product-white.jpg` / `product-black.jpg` / `product-3pack.jpg` | catalogue cards + feature band |
+| `story.jpg` | Our Story / Explore sections |
+| `logo-black.png` / `logo-white.png` | header / footer logo (black lockup live) |
 | `favicon.png` | browser tab icon |
 
 Keep hero/section images ~2000px wide and under ~300 KB.
