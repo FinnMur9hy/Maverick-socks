@@ -27,7 +27,7 @@
     restart();
   })();
 
-  // The Technology: interactive feature map
+  // The Technology: tap-to-reveal alterations
   (function () {
     var fig = document.getElementById("techFigure");
     var detail = document.getElementById("techDetail");
@@ -35,9 +35,9 @@
 
     var data = [
       { t: "Breathable mid-foot knit", d: "Open mesh channels through the arch move sweat out and drop the temperature, so feet stay dry and blister-free." },
-      { t: "Grip pads, inside & out", d: "Double-stitched silicone ‘M’ pads on both faces of the sock — your foot locks to the sock, the sock locks to the boot." },
+      { t: "Grip pads, inside & out", d: "Double-stitched silicone ‘M’ pads on both faces of the sock — your foot locks to the sock, the sock locks to the boot. Not just one side that lets your foot slide." },
       { t: "Cushioned thick heel", d: "A denser, padded heel soaks up impact and stops the sock slipping down through 90 minutes and extra time." },
-      { t: "Reinforced toe & left/right fit", d: "Extra-dense knit at the toe takes the abuse, and each sock is shaped and marked L or R for a true anatomical fit." }
+      { t: "Reinforced toe & left / right fit", d: "Extra-dense knit at the toe takes the abuse, and each sock is shaped and marked L or R for a true anatomical fit." }
     ];
     var targets = fig.querySelectorAll("[data-i]");
 
@@ -45,7 +45,7 @@
       var f = data[i];
       if (!f) return;
       detail.innerHTML =
-        '<span class="d-tag">' + (Number(i) + 1) + " / " + data.length + "</span>" +
+        '<span class="d-tag">Alteration ' + ("0" + (Number(i) + 1)).slice(-2) + "</span>" +
         "<h3>" + f.t + "</h3><p>" + f.d + "</p>";
       targets.forEach(function (el) {
         el.classList.toggle("is-active", el.getAttribute("data-i") === String(i));
@@ -55,9 +55,6 @@
     targets.forEach(function (el) {
       var i = el.getAttribute("data-i");
       el.addEventListener("click", function () { select(i); });
-      el.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(i); }
-      });
     });
     select(0);
   })();
