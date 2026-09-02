@@ -11,7 +11,7 @@
   --line: #e2e2e0;
   --band: #0d0d0d;
   --accent: #12b5a5;
-  --header-h: 68px;
+  --header-h: 80px;
   --container: 1280px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --sans: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -89,7 +89,7 @@ a { color: inherit; text-decoration: none; }
 }
 .header-inner { height: var(--header-h); display: flex; align-items: center; gap: 24px; }
 .brand { display: inline-flex; align-items: center; }
-.brand-logo { height: 30px; width: auto; }
+.brand-logo { height: 48px; width: auto; }
 .main-nav { display: flex; gap: 30px; margin: 0 auto; }
 .main-nav a {
   font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
