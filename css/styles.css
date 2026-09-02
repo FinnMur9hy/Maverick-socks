@@ -20,6 +20,7 @@
 
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 28px); }
 body {

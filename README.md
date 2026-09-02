@@ -66,18 +66,34 @@ same name (or update the path in `index.html` / `products.js`):
 
 Keep hero/section images ~2000px wide and under ~300 KB.
 
-## Contact form
+## Forms (Netlify Forms)
 
-The **Contact Us** form posts to a placeholder Formspree endpoint
-(`action="https://formspree.io/f/your-form-id"` in `index.html`). Create a form
-at <https://formspree.io> (or your provider of choice) and drop in the real URL,
-or remove the `<section id="contact">` block. Also update the
-`hello@mavericksocks.com` address in `index.html` (contact section + footer).
+The **Contact** and **newsletter** forms use [Netlify Forms](https://docs.netlify.com/forms/setup/).
+Nothing to configure in the code — once the site is deployed on Netlify, Netlify
+detects the two forms (`name="contact"` and `name="newsletter"`) at build time and
+captures every submission. On success the visitor lands on `thanks.html`.
+
+In the Netlify dashboard: **Forms** → pick a form → **Settings & notifications**
+→ add an email notification so submissions reach your inbox. Each form has a
+hidden honeypot (`bot-field`) for basic spam protection; enable reCAPTCHA there
+too if you get spam.
+
+If you host somewhere other than Netlify, these forms won't work — swap the
+`action`/attributes for a service like Formspree, or remove the blocks.
+
+Also update the `hello@mavericksocks.com` address in `index.html` (contact
+section + footer).
 
 ## Deploy
 
-Any static host works — drop the folder into Netlify, Vercel, Cloudflare Pages
-or GitHub Pages. No environment variables needed; Snipcart runs client-side.
+**Netlify (recommended — free form handling):**
+1. Sign up at <https://netlify.com>, **Add new site → Import an existing project → GitHub**, pick `maverick-socks`.
+2. Build command: *(none)* · Publish directory: `.` — click **Deploy**. `netlify.toml` already sets this.
+3. Every push to `main` redeploys automatically.
+4. **Domain settings → Add a custom domain**, then follow the DNS steps at your registrar.
+
+Also works on GitHub Pages, Vercel or Cloudflare Pages (static, no build, no env
+vars) — but the forms above are Netlify-specific.
 
 ## Licence
 
