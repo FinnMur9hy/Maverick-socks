@@ -9,7 +9,7 @@
   (function () {
     var hero = document.querySelector("[data-hero]");
     if (!hero) return;
-    var slides = hero.querySelectorAll(".hero-slide");
+    var slides = hero.querySelectorAll(".hero-bg");
     var dots = hero.querySelectorAll(".hero-dots button");
     if (slides.length < 2) return;
     var i = 0;
