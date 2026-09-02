@@ -33,8 +33,8 @@ window.MAVERICK_PRODUCTS = [
 ];
 
 (function renderProducts() {
-  var grid = document.getElementById("productGrid");
-  if (!grid) return;
+  var track = document.getElementById("productTrack");
+  if (!track) return;
   var money = function (n) { return "£" + n.toFixed(2); };
 
   window.MAVERICK_PRODUCTS.forEach(function (p) {
@@ -50,7 +50,7 @@ window.MAVERICK_PRODUCTS = [
       '<p class="product-blurb">' + p.blurb + "</p>" +
       '<div class="product-foot">' +
       '<span class="product-price">' + money(p.price) + "</span>" +
-      '<button type="button" class="btn btn--accent buy-btn snipcart-add-item"' +
+      '<button type="button" class="btn btn--dark buy-btn snipcart-add-item"' +
       ' data-item-id="' + p.id + '"' +
       ' data-item-name="' + p.name + '"' +
       ' data-item-price="' + p.price.toFixed(2) + '"' +
@@ -60,6 +60,6 @@ window.MAVERICK_PRODUCTS = [
       ' data-item-max-quantity="10"' +
       ">Add to cart</button>" +
       "</div></div>";
-    grid.appendChild(card);
+    track.appendChild(card);
   });
 })();

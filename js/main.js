@@ -5,14 +5,44 @@
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  // Solidify header on scroll
-  var header = document.getElementById("siteHeader");
-  var onScroll = function () {
-    if (!header) return;
-    header.classList.toggle("is-scrolled", window.scrollY > 12);
-  };
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
+  // Product carousel: arrows + progress bar
+  document.querySelectorAll("[data-carousel]").forEach(function (wrap) {
+    var track = wrap.querySelector(".carousel-track");
+    var section = wrap.closest("section") || document;
+    var bar = section.querySelector("[data-carousel-bar]");
+    var arrows = section.querySelectorAll(".c-arrow");
+    if (!track) return;
+
+    var step = function () {
+      var first = track.firstElementChild;
+      return first ? first.getBoundingClientRect().width + 20 : track.clientWidth * 0.8;
+    };
+    var update = function () {
+      var max = track.scrollWidth - track.clientWidth;
+      var overflow = max > 8;
+      if (bar) bar.parentElement.hidden = !overflow;
+      var ctrl = section.querySelector(".carousel-ctrl");
+      if (ctrl) ctrl.hidden = !overflow;
+      var ratio = max > 2 ? track.scrollLeft / max : 0;
+      if (bar) {
+        var vis = Math.max(0.12, track.clientWidth / track.scrollWidth);
+        bar.style.width = vis * 100 + "%";
+        bar.style.transform = "translateX(" + ratio * (100 / vis - 100) + "%)";
+      }
+      arrows.forEach(function (a) {
+        var dir = Number(a.getAttribute("data-dir"));
+        a.disabled = (dir < 0 && track.scrollLeft < 4) || (dir > 0 && track.scrollLeft >= max - 4);
+      });
+    };
+    arrows.forEach(function (a) {
+      a.addEventListener("click", function () {
+        track.scrollBy({ left: Number(a.getAttribute("data-dir")) * step(), behavior: "smooth" });
+      });
+    });
+    track.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  });
 
   // Mobile navigation
   var toggle = document.getElementById("navToggle");
