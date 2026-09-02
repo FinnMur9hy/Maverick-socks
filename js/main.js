@@ -34,10 +34,26 @@
     if (!fig || !detail) return;
 
     var data = [
-      { t: "Breathable mid-foot knit", d: "Open mesh channels through the arch move sweat out and drop the temperature, so feet stay dry and blister-free." },
-      { t: "Grip pads, inside & out", d: "Double-stitched silicone ‘M’ pads on both faces of the sock — your foot locks to the sock, the sock locks to the boot. Not just one side that lets your foot slide." },
-      { t: "Cushioned thick heel", d: "A denser, padded heel soaks up impact and stops the sock slipping down through 90 minutes and extra time." },
-      { t: "Reinforced toe & left / right fit", d: "Extra-dense knit at the toe takes the abuse, and each sock is shaped and marked L or R for a true anatomical fit." }
+      {
+        t: "Breathable mid-foot knit",
+        mav: "Open mesh channels through the arch pull sweat and heat out, so your foot stays dry and planted.",
+        other: "One dense knit that traps moisture — the moment your foot sweats, it starts to slide."
+      },
+      {
+        t: "Grip pads, inside & out",
+        mav: "Double-stitched silicone ‘M’ pads on both faces of the sock: foot locked to the sock, sock locked to the boot.",
+        other: "Silicone on one side only, so your foot still slips around inside the sock."
+      },
+      {
+        t: "Cushioned thick heel",
+        mav: "A denser, padded heel soaks up impact and keeps the sock from sliding down for the full 90.",
+        other: "A flat, thin heel that bunches and works its way down after 20 minutes."
+      },
+      {
+        t: "Reinforced toe &amp; left / right fit",
+        mav: "Extra-dense knit at the toe takes the abuse, and each sock is shaped and marked L or R for a true anatomical fit.",
+        other: "One shape for both feet and a thin toe that wears through in a season."
+      }
     ];
     var targets = fig.querySelectorAll("[data-i]");
 
@@ -46,7 +62,11 @@
       if (!f) return;
       detail.innerHTML =
         '<span class="d-tag">Alteration ' + ("0" + (Number(i) + 1)).slice(-2) + "</span>" +
-        "<h3>" + f.t + "</h3><p>" + f.d + "</p>";
+        "<h3>" + f.t + "</h3>" +
+        '<div class="d-compare">' +
+        '<div class="d-row d-row--mav"><span class="d-who">Maverick</span><p>' + f.mav + "</p></div>" +
+        '<div class="d-row d-row--other"><span class="d-who">Typical grip sock</span><p>' + f.other + "</p></div>" +
+        "</div>";
       targets.forEach(function (el) {
         el.classList.toggle("is-active", el.getAttribute("data-i") === String(i));
       });
