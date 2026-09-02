@@ -135,28 +135,38 @@
       <div class="section">
         <div class="container">
           <div class="carousel-head"><h2 class="section-title">What you&rsquo;re actually buying</h2></div>
-          <p class="section-lead">Not a printed logo on a cheap tube sock. Every element below is knitted or bonded in to do a job on the pitch.</p>
+          <p class="section-lead">Not a printed logo on a cheap tube sock. Tap any point to see what it does.</p>
 
-          <div class="tech">
-            <div class="tech-diagram">
-              <img class="tech-sock" src="assets/tech-sock.jpg" alt="Maverick grip sock with its key features marked" />
-              <span class="tech-pin" style="top:15%;left:45%">1</span>
-              <span class="tech-pin" style="top:31%;left:42%">2</span>
-              <span class="tech-pin" style="top:54%;left:38%">3</span>
-              <span class="tech-pin" style="top:64%;left:52%">4</span>
-              <span class="tech-pin" style="top:57%;left:62%">5</span>
-              <span class="tech-pin" style="top:83%;left:30%">6</span>
-            </div>
-
-            <ol class="tech-list">
-              <li><span class="tech-n">1</span><div><h3>Woven-in branding</h3><p>&ldquo;Maverick&rdquo; and the wing mark are knitted into the yarn, not printed on top &mdash; so they never crack, peel or wash out.</p></div></li>
-              <li><span class="tech-n">2</span><div><h3>Signature wing motif</h3><p>The repeating wing runs down the leg and scales up the sock &mdash; instantly recognisable on the pitch.</p></div></li>
-              <li><span class="tech-n">3</span><div><h3>Breathable mid-foot knit</h3><p>Open mesh channels through the arch move sweat out and drop the temperature, so feet stay dry and blister-free.</p></div></li>
-              <li><span class="tech-n">4</span><div><h3>Grip pads, inside &amp; out</h3><p>Double-stitched silicone &lsquo;M&rsquo; pads on both faces of the sock &mdash; your foot locks to the sock, the sock locks to the boot.</p></div></li>
-              <li><span class="tech-n">5</span><div><h3>Cushioned thick heel</h3><p>A denser, padded heel soaks up impact and stops the sock slipping down through 90 minutes and extra time.</p></div></li>
-              <li><span class="tech-n">6</span><div><h3>Reinforced toe &amp; left/right fit</h3><p>Extra-dense knit at the toe takes the abuse, and each sock is shaped and marked L or R for a true anatomical fit.</p></div></li>
-            </ol>
-          </div>
+          <figure class="tech-figure" id="techFigure">
+            <svg class="tech-svg" viewBox="0 0 200 70" role="img" aria-label="Maverick grip sock feature map">
+              <g class="tech-scene">
+              <image href="assets/tech-sock.jpg" x="66" y="1" width="68" height="54" />
+              <g class="tech-lines" aria-hidden="true">
+                <line x1="56" y1="10" x2="96" y2="13" />
+                <line x1="56" y1="23" x2="95" y2="19" />
+                <line x1="56" y1="38" x2="92" y2="31" />
+                <line x1="56" y1="55" x2="86" y2="47" />
+                <line x1="144" y1="18" x2="110" y2="33" />
+                <line x1="144" y1="38" x2="103" y2="37" />
+              </g>
+              <text class="tech-lbl" data-i="0" x="54" y="11" text-anchor="end">Woven-in branding</text>
+              <text class="tech-lbl" data-i="1" x="54" y="24" text-anchor="end">Signature wing motif</text>
+              <text class="tech-lbl" data-i="2" x="54" y="39" text-anchor="end">Breathable knit</text>
+              <text class="tech-lbl" data-i="5" x="54" y="56" text-anchor="end">Reinforced toe / L-R</text>
+              <text class="tech-lbl" data-i="4" x="146" y="19" text-anchor="start">Cushioned heel</text>
+              <text class="tech-lbl" data-i="3" x="146" y="39" text-anchor="start">Grip pads, in &amp; out</text>
+              <g class="tech-pins">
+                <g class="tech-pin" data-i="0" role="button" tabindex="0" aria-label="Woven-in branding"><circle class="hit" cx="96" cy="13" r="6"/><circle class="dot" cx="96" cy="13" r="2.6"/><text class="pnum" x="96" y="13">1</text></g>
+                <g class="tech-pin" data-i="1" role="button" tabindex="0" aria-label="Signature wing motif"><circle class="hit" cx="95" cy="19" r="6"/><circle class="dot" cx="95" cy="19" r="2.6"/><text class="pnum" x="95" y="19">2</text></g>
+                <g class="tech-pin" data-i="2" role="button" tabindex="0" aria-label="Breathable mid-foot knit"><circle class="hit" cx="92" cy="31" r="6"/><circle class="dot" cx="92" cy="31" r="2.6"/><text class="pnum" x="92" y="31">3</text></g>
+                <g class="tech-pin" data-i="3" role="button" tabindex="0" aria-label="Grip pads, inside and out"><circle class="hit" cx="103" cy="37" r="6"/><circle class="dot" cx="103" cy="37" r="2.6"/><text class="pnum" x="103" y="37">4</text></g>
+                <g class="tech-pin" data-i="4" role="button" tabindex="0" aria-label="Cushioned thick heel"><circle class="hit" cx="110" cy="33" r="6"/><circle class="dot" cx="110" cy="33" r="2.6"/><text class="pnum" x="110" y="33">5</text></g>
+                <g class="tech-pin" data-i="5" role="button" tabindex="0" aria-label="Reinforced toe and left-right fit"><circle class="hit" cx="86" cy="47" r="6"/><circle class="dot" cx="86" cy="47" r="2.6"/><text class="pnum" x="86" y="47">6</text></g>
+              </g>
+              </g>
+            </svg>
+            <div class="tech-detail" id="techDetail" aria-live="polite"></div>
+          </figure>
         </div>
       </div>
 
