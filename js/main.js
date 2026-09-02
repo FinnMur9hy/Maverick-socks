@@ -27,61 +27,6 @@
     restart();
   })();
 
-  // The Technology: tap-to-reveal alterations
-  (function () {
-    var fig = document.getElementById("techFigure");
-    var detail = document.getElementById("techDetail");
-    if (!fig || !detail) return;
-
-    var data = [
-      {
-        t: "Breathable mid-foot knit",
-        mav: "Open mesh channels through the arch pull sweat and heat out, so your foot stays dry and planted.",
-        other: "One dense knit that traps moisture — the moment your foot sweats, it starts to slide."
-      },
-      {
-        t: "Grip pads, inside & out",
-        mav: "Double-stitched silicone ‘M’ pads on both faces of the sock: foot locked to the sock, sock locked to the boot.",
-        other: "Silicone on one side only, so your foot still slips around inside the sock."
-      },
-      {
-        t: "Cushioned thick heel",
-        mav: "A denser, padded heel soaks up impact and keeps the sock from sliding down for the full 90.",
-        other: "A flat, thin heel that bunches and works its way down after 20 minutes."
-      },
-      {
-        t: "Reinforced toe &amp; left / right fit",
-        mav: "Extra-dense knit at the toe takes the abuse, and each sock is shaped and marked L or R for a true anatomical fit.",
-        other: "One shape for both feet and a thin toe that wears through in a season."
-      }
-    ];
-    var targets = fig.querySelectorAll("[data-i]");
-
-    var select = function (i) {
-      var f = data[i];
-      if (!f) return;
-      detail.innerHTML =
-        '<span class="d-tag">Alteration ' + ("0" + (Number(i) + 1)).slice(-2) + "</span>" +
-        "<h3>" + f.t + "</h3>" +
-        '<div class="d-compare">' +
-        '<div class="d-row d-row--mav"><span class="d-who">Maverick</span><p>' + f.mav + "</p></div>" +
-        '<div class="d-row d-row--other"><span class="d-who">Typical grip sock</span><p>' + f.other + "</p></div>" +
-        "</div>";
-      targets.forEach(function (el) {
-        el.classList.toggle("is-active", el.getAttribute("data-i") === String(i));
-      });
-    };
-
-    targets.forEach(function (el) {
-      var i = el.getAttribute("data-i");
-      el.addEventListener("click", function () { select(i); });
-      el.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(i); }
-      });
-    });
-    select(0);
-  })();
-
   // Product carousel: arrows + progress bar
   document.querySelectorAll("[data-carousel]").forEach(function (wrap) {
     var track = wrap.querySelector(".carousel-track");
