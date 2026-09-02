@@ -8,7 +8,7 @@ window.MAVERICK_PRODUCTS = [
     name: "Maverick Grip Socks — White",
     price: 12.99,
     image: "assets/product-white.jpg",
-    alt: "White Maverick grip sock, side angle, showing the grip sole",
+    alt: "White Maverick grip socks with packaging and the grip sole",
     blurb: "The original. White with the black wing motif and a full-contact grip sole.",
     badge: "Bestseller"
   },
@@ -17,7 +17,7 @@ window.MAVERICK_PRODUCTS = [
     name: "Maverick Grip Socks — Black",
     price: 12.99,
     image: "assets/product-black.jpg",
-    alt: "Black Maverick grip sock, side angle, showing the grip sole",
+    alt: "Black Maverick grip socks with packaging and the grip sole",
     blurb: "Same grip, blacked out. Woven logo cuff and silicone grips inside and out.",
     badge: ""
   },
@@ -27,7 +27,7 @@ window.MAVERICK_PRODUCTS = [
     price: 34.99,
     image: "assets/product-3pack.jpg",
     alt: "Three pairs of Maverick grip socks with packaging",
-    blurb: "Three mixed pairs so there's always a clean set in the kit bag. Save £3.98.",
+    blurb: "Three pairs of your choosing so there's always a clean set in the kit bag. Save £3.98.",
     badge: "Best value"
   }
 ];
@@ -43,7 +43,7 @@ window.MAVERICK_PRODUCTS = [
     card.innerHTML =
       '<div class="product-media">' +
       (p.badge ? '<span class="product-badge">' + p.badge + "</span>" : "") +
-      '<img src="' + p.image + '" alt="' + p.alt + '" loading="lazy" width="600" height="750" />' +
+      '<img src="' + p.image + '" alt="' + p.alt + '" loading="lazy" width="600" height="600" />' +
       "</div>" +
       '<div class="product-body">' +
       "<h3>" + p.name + "</h3>" +

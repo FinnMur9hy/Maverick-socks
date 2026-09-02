@@ -59,7 +59,7 @@ same name (or update the path in `index.html` / `products.js`):
 | File | Where it shows |
 |---|---|
 | `hero-1.jpg` / `hero-2.jpg` | homepage hero slideshow (crossfades every ~5.5s) |
-| `product-white.jpg` / `product-black.jpg` / `product-3pack.jpg` | catalogue cards + feature band |
+| `product-white.jpg` / `product-black.jpg` / `product-3pack.jpg` | catalogue cards (square, 1200×1200) |
 | `story.jpg` | Our Story / Explore sections |
 | `logo-black.png` / `logo-white.png` | header / footer logo (black lockup live) |
 | `favicon.png` | browser tab icon |
