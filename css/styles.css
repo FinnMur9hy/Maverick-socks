@@ -184,20 +184,30 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
 .band .headline { justify-content: center; }
 .band-sub { color: rgba(255,255,255,0.72); margin: 16px auto 0; max-width: 52ch; }
 
-/* ---------- The Technology: tap-to-reveal ---------- */
-.tech-figure { max-width: 760px; margin: 4px auto 0; }
-.tech-tabs { display: flex; flex-wrap: wrap; gap: 10px; }
-.tech-tab {
-  display: inline-flex; align-items: center; gap: 9px;
-  font-family: var(--sans); font-size: 0.82rem; font-weight: 600; color: var(--ink);
-  background: #fff; border: 1.5px solid var(--line); border-radius: 999px;
-  padding: 11px 18px; cursor: pointer; text-align: left;
-  transition: border-color 0.15s var(--ease), background-color 0.15s var(--ease), color 0.15s var(--ease);
+/* ---------- The Technology: tap-to-reveal diagram ---------- */
+.tech-figure { max-width: 560px; margin: 4px auto 0; }
+.tech-svg { width: 100%; height: auto; display: block; overflow: visible; }
+.tech-lines line { stroke: var(--ink); stroke-width: 0.4; opacity: 0.55; }
+.tech-lbl {
+  font-family: var(--sans); font-size: 4.6px; font-weight: 700; letter-spacing: 0.02em;
+  text-transform: uppercase; fill: var(--ink); cursor: pointer; outline: none;
 }
-.tech-tab span { font-weight: 700; color: var(--ink-dim); font-size: 0.78rem; }
-.tech-tab:hover { border-color: var(--ink); }
-.tech-tab.is-active { background: var(--ink); border-color: var(--ink); color: #fff; }
-.tech-tab.is-active span { color: var(--accent); }
+.tech-lbl:hover { fill: #000; }
+.tech-lbl.is-active { text-decoration: underline; text-underline-offset: 2px; }
+.tech-pin { cursor: pointer; outline: none; }
+.tech-pin .hit { fill: transparent; }
+.tech-pin .dot {
+  fill: #fff; stroke: var(--ink); stroke-width: 1.2;
+  transition: fill 0.15s var(--ease);
+}
+.tech-pin .pnum {
+  font-family: var(--sans); font-size: 4px; font-weight: 700; fill: var(--ink);
+  text-anchor: middle; dominant-baseline: central; pointer-events: none;
+  transition: fill 0.15s var(--ease);
+}
+.tech-pin:hover .dot, .tech-pin.is-active .dot { fill: var(--ink); }
+.tech-pin.is-active .pnum { fill: #fff; }
+.tech-pin:focus-visible .dot { stroke-width: 2; }
 
 .tech-detail {
   margin-top: 18px; border: 1px solid var(--line); border-radius: 12px;
@@ -309,7 +319,12 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
   .header-actions { margin-left: auto; }
   .section { padding: 52px 0; }
   .tech-grid { grid-template-columns: 1fr; }
-  .tech-tab { width: 100%; }
+  .tech-lbl, .tech-lines { display: none; }
+  .tech-scene { transform: scale(1.12); transform-origin: 100px 84px; transform-box: view-box; }
+  .tech-figure { max-width: 360px; }
+  .tech-pin .dot { r: 2.5; }
+  .tech-pin .pnum { font-size: 3.4px; }
+  .tech-pin .hit { r: 8; }
   .footer-grid { grid-template-columns: 1fr; }
   .cart-btn span:first-child { display: none; }
 }

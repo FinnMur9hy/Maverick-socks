@@ -55,6 +55,9 @@
     targets.forEach(function (el) {
       var i = el.getAttribute("data-i");
       el.addEventListener("click", function () { select(i); });
+      el.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(i); }
+      });
     });
     select(0);
   })();
