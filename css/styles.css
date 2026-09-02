@@ -190,11 +190,37 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
 .feature-band-inner { position: relative; padding-top: 56px; padding-bottom: 56px; }
 .feature-band .headline { max-width: 18ch; }
 
-.spec-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
-.spec { border-top: 2px solid var(--ink); padding-top: 16px; }
-.spec-no { font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--accent); }
-.spec h3 { font-size: 0.95rem; font-weight: 700; text-transform: uppercase; margin: 8px 0 6px; }
-.spec p { margin: 0; color: var(--ink-dim); font-size: 0.88rem; }
+/* ---------- The Technology: annotated diagram ---------- */
+.tech { display: grid; grid-template-columns: minmax(300px, 460px) 1fr; gap: 48px; align-items: center; }
+.tech-diagram { position: relative; background: var(--panel); border-radius: 14px; overflow: hidden; }
+.tech-sock { width: 100%; display: block; }
+.tech-pin {
+  position: absolute; transform: translate(-50%, -50%);
+  width: 30px; height: 30px; border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent); color: #fff; font-weight: 700; font-size: 0.82rem;
+  box-shadow: 0 0 0 4px rgba(18, 181, 165, 0.22), 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.tech-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.tech-list li { display: flex; gap: 16px; padding: 18px 0; border-top: 1px solid var(--line); }
+.tech-list li:last-child { border-bottom: 1px solid var(--line); }
+.tech-n {
+  flex: none; width: 26px; height: 26px; border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--ink); color: #fff; font-weight: 700; font-size: 0.78rem;
+}
+.tech-list h3 { font-size: 0.98rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em; margin: 3px 0 5px; }
+.tech-list p { margin: 0; color: var(--ink-dim); font-size: 0.9rem; }
+
+/* ---------- The Technology: feature grid ---------- */
+.tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.tech-feature { border: 1px solid var(--line); border-radius: 12px; background: #fff; padding: 26px 24px; }
+.tech-feature svg { width: 34px; height: 34px; fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 14px; }
+.tech-feature svg circle { fill: var(--ink); stroke: none; }
+.tech-feature svg rect { fill: none; }
+.tech-feature h3 { font-size: 0.95rem; font-weight: 700; text-transform: uppercase; margin: 0 0 8px; }
+.tech-feature p { margin: 0; color: var(--ink-dim); font-size: 0.88rem; }
+.tech-cta { margin-top: 34px; }
 
 /* ---------- Collections ---------- */
 .collection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -273,7 +299,9 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
 
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
-  .spec-row { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .tech { grid-template-columns: 1fr; gap: 28px; }
+  .tech-diagram { max-width: 420px; margin: 0 auto; }
+  .tech-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
   .split { grid-template-columns: 1fr; gap: 28px; }
   .collection-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -284,7 +312,8 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
   .mobile-nav { display: flex; }
   .header-actions { margin-left: auto; }
   .section { padding: 52px 0; }
-  .spec-row { grid-template-columns: 1fr; }
+  .tech-grid { grid-template-columns: 1fr; }
+  .tech-pin { width: 26px; height: 26px; font-size: 0.72rem; }
   .footer-grid { grid-template-columns: 1fr; }
   .cart-btn span:first-child { display: none; }
 }
