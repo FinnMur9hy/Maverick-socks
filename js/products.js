@@ -7,7 +7,7 @@ window.MAVERICK_PRODUCTS = [
     id: "mav-grip-white",
     name: "Maverick Grip Socks — White",
     price: 12.99,
-    image: "assets/product-white.jpg",
+    image: "assets/product-white.jpg?v=2",
     alt: "White Maverick grip socks with packaging and the grip sole",
     blurb: "The original. White with the black wing motif and a full-contact grip sole.",
     badge: "Bestseller"
@@ -16,7 +16,7 @@ window.MAVERICK_PRODUCTS = [
     id: "mav-grip-black",
     name: "Maverick Grip Socks — Black",
     price: 12.99,
-    image: "assets/product-black.jpg",
+    image: "assets/product-black.jpg?v=2",
     alt: "Black Maverick grip socks with packaging and the grip sole",
     blurb: "Same grip, blacked out. Woven logo cuff and silicone grips inside and out.",
     badge: ""
@@ -25,7 +25,7 @@ window.MAVERICK_PRODUCTS = [
     id: "mav-grip-3pack",
     name: "Maverick Grip Socks — 3-Pack",
     price: 34.99,
-    image: "assets/product-3pack.jpg",
+    image: "assets/product-3pack.jpg?v=2",
     alt: "Three pairs of Maverick grip socks with packaging",
     blurb: "Three pairs of your choosing so there's always a clean set in the kit bag. Save £3.98.",
     badge: "Best value"
