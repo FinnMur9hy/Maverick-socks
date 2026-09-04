@@ -104,7 +104,75 @@
         </div>
       </div>
       <div class="carousel" data-carousel>
-        <div class="carousel-track" id="productTrack"></div>
+        <!-- Products are static markup on purpose: Snipcart validates each order by
+             fetching data-item-url and scanning the HTML for a matching
+             .snipcart-add-item / data-item-id. JS-injected cards would be invisible to it. -->
+        <div class="carousel-track" id="productTrack">
+          <article class="product-card">
+            <div class="product-media">
+              <span class="product-badge">Bestseller</span>
+              <img src="assets/product-white.jpg?v=2" alt="White Maverick grip socks with packaging and the grip sole" loading="lazy" width="600" height="600" />
+            </div>
+            <div class="product-body">
+              <h3>Maverick Grip Socks &mdash; White</h3>
+              <p class="product-blurb">The original. White with the black wing motif and a full-contact grip sole.</p>
+              <div class="product-foot">
+                <span class="product-price">&pound;12.99</span>
+                <button type="button" class="btn btn--dark buy-btn snipcart-add-item"
+                  data-item-id="mav-grip-white"
+                  data-item-name="Maverick Grip Socks &mdash; White"
+                  data-item-price="12.99"
+                  data-item-url="/"
+                  data-item-description="The original. White with the black wing motif and a full-contact grip sole."
+                  data-item-image="https://mavericksportswear.com/assets/product-white.jpg"
+                  data-item-max-quantity="10">Add to cart</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-media">
+              <img src="assets/product-black.jpg?v=2" alt="Black Maverick grip socks with packaging and the grip sole" loading="lazy" width="600" height="600" />
+            </div>
+            <div class="product-body">
+              <h3>Maverick Grip Socks &mdash; Black</h3>
+              <p class="product-blurb">Same grip, blacked out. Woven logo cuff and silicone grips inside and out.</p>
+              <div class="product-foot">
+                <span class="product-price">&pound;12.99</span>
+                <button type="button" class="btn btn--dark buy-btn snipcart-add-item"
+                  data-item-id="mav-grip-black"
+                  data-item-name="Maverick Grip Socks &mdash; Black"
+                  data-item-price="12.99"
+                  data-item-url="/"
+                  data-item-description="Same grip, blacked out. Woven logo cuff and silicone grips inside and out."
+                  data-item-image="https://mavericksportswear.com/assets/product-black.jpg"
+                  data-item-max-quantity="10">Add to cart</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-media">
+              <span class="product-badge">Best value</span>
+              <img src="assets/product-3pack.jpg?v=2" alt="Three pairs of Maverick grip socks with packaging" loading="lazy" width="600" height="600" />
+            </div>
+            <div class="product-body">
+              <h3>Maverick Grip Socks &mdash; 3-Pack</h3>
+              <p class="product-blurb">Three pairs of your choosing so there&rsquo;s always a clean set in the kit bag. Save &pound;3.98.</p>
+              <div class="product-foot">
+                <span class="product-price">&pound;34.99</span>
+                <button type="button" class="btn btn--dark buy-btn snipcart-add-item"
+                  data-item-id="mav-grip-3pack"
+                  data-item-name="Maverick Grip Socks &mdash; 3-Pack"
+                  data-item-price="34.99"
+                  data-item-url="/"
+                  data-item-description="Three pairs of your choosing so there&rsquo;s always a clean set in the kit bag. Save &pound;3.98."
+                  data-item-image="https://mavericksportswear.com/assets/product-3pack.jpg"
+                  data-item-max-quantity="10">Add to cart</button>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
       <div class="container">
         <div class="carousel-bar"><span data-carousel-bar></span></div>
@@ -291,7 +359,6 @@
 
   <div hidden id="snipcart" data-api-key="YOUR_SNIPCART_PUBLIC_API_KEY" data-config-modal-style="side" data-currency="gbp"></div>
 
-  <script src="js/products.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

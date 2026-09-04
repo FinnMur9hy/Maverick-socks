@@ -7,11 +7,9 @@ and checkout. No build step, no framework.
 
 ```
 .
-├── index.html          # the whole storefront (one page)
+├── index.html          # the whole storefront (one page, products included)
 ├── css/styles.css
-├── js/
-│   ├── products.js     # product catalogue + card rendering
-│   └── main.js         # nav, scroll header, cart guard, toast
+├── js/main.js          # nav, hero, carousel, cart guard, toast
 └── assets/             # logos + product photography
 ```
 
@@ -42,19 +40,22 @@ The cart is wired up but **inactive until you add an API key**. Until then the
    - add your deployed domain (and `localhost`) under **Domains & URLs**,
    - connect a payment gateway (Stripe, etc.),
    - configure shipping and tax.
-5. Snipcart validates each product by crawling `data-item-url` (`/`). Keep the
-   product markup on the homepage, or set validation to a dedicated URL.
+5. Snipcart validates every order by fetching `data-item-url` (`/`) and scanning
+   the returned HTML for an element with the `snipcart-add-item` class and a
+   matching `data-item-id`. The product cards are therefore **plain static
+   markup** in `index.html` — if you ever move them into JavaScript, Snipcart
+   will see an empty page and reject checkouts.
 
-Product IDs, names and prices live in [`js/products.js`](js/products.js) — edit
-there, then make sure they match anything you define in the Snipcart dashboard.
-
-> Prices and product photos in this repo are placeholders. Swap the numbers in
-> `products.js` for your live catalogue.
+Product IDs, names and prices live in the `.snipcart-add-item` buttons in
+[`index.html`](index.html). When you change a price, change it in **both** the
+button's `data-item-price` (what Snipcart charges and validates against) and the
+visible `.product-price` next to it (what the customer reads) — nothing keeps
+them in sync for you.
 
 ## Images
 
 All photography lives in `assets/`. To change one, replace the file keeping the
-same name (or update the path in `index.html` / `products.js`):
+same name (or update the path in `index.html`):
 
 | File | Where it shows |
 |---|---|
