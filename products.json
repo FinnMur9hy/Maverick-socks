@@ -1,0 +1,28 @@
+{
+  "_comment": "Server-side price list. This is what customers are actually charged — the checkout function reads prices from here and ignores anything the browser sends. Prices are in PENCE (integers), because that is what Stripe expects. When you change a price, change it here AND in the matching data-item-price / .product-price in index.html.",
+  "currency": "gbp",
+  "products": {
+    "mav-grip-white": {
+      "name": "Maverick Grip Socks — White",
+      "price": 1299,
+      "image": "https://mavericksportswear.com/assets/product-white.jpg"
+    },
+    "mav-grip-black": {
+      "name": "Maverick Grip Socks — Black",
+      "price": 1299,
+      "image": "https://mavericksportswear.com/assets/product-black.jpg"
+    },
+    "mav-grip-3pack": {
+      "name": "Maverick Grip Socks — 3-Pack",
+      "price": 3499,
+      "image": "https://mavericksportswear.com/assets/product-3pack.jpg"
+    }
+  },
+  "shipping": {
+    "freeOverPence": 3000,
+    "standardPence": 395,
+    "standardLabel": "Standard UK delivery",
+    "freeLabel": "Free UK delivery"
+  },
+  "maxQuantityPerItem": 10
+}

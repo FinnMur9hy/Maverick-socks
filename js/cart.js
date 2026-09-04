@@ -12,7 +12,11 @@
 
   var STORAGE_KEY = "maverick-cart-v1";
   var FREE_SHIPPING_OVER = 30;
+
+  /* Flip to true once STRIPE_SECRET_KEY is set in Netlify. This one switch turns on
+     the real checkout AND hides the "checkout isn't connected" note on the page. */
   var CHECKOUT_ENABLED = false;
+  var CHECKOUT_ENDPOINT = "/api/create-checkout-session";
 
   /* ---------- state ---------- */
 
@@ -217,14 +221,54 @@
       '<p class="cart-note" data-checkout-note hidden></p>';
   }
 
-  function handoff() {
-    /* Point this at a payment provider (Stripe Checkout, Snipcart, ...). */
+  var checkoutBusy = false;
+
+  function showNote(html) {
     var note = drawer.querySelector("[data-checkout-note]");
     if (!note) return;
-    note.innerHTML =
-      "<strong>Payments aren&rsquo;t connected yet.</strong> Your cart is saved &mdash; " +
-      "checkout goes live as soon as a payment provider is set up.";
+    note.innerHTML = html;
     note.hidden = false;
+  }
+
+  function handoff() {
+    if (checkoutBusy || !items.length) return;
+
+    if (!CHECKOUT_ENABLED) {
+      showNote(
+        "<strong>Payments aren&rsquo;t connected yet.</strong> Your cart is saved &mdash; " +
+        "checkout goes live as soon as the payment provider is switched on."
+      );
+      return;
+    }
+
+    var btn = drawer.querySelector("[data-checkout]");
+    checkoutBusy = true;
+    if (btn) { btn.disabled = true; btn.textContent = "Taking you to checkout…"; }
+
+    /* Only ids and quantities go to the server — it looks up the real prices. */
+    var payload = items.map(function (i) { return { id: i.id, qty: i.qty }; });
+
+    window
+      .fetch(CHECKOUT_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: payload })
+      })
+      .then(function (res) {
+        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+      })
+      .then(function (r) {
+        if (r.ok && r.data && r.data.url) {
+          window.location.href = r.data.url;
+          return;
+        }
+        throw new Error((r.data && r.data.error) || "Checkout is unavailable right now.");
+      })
+      .catch(function (err) {
+        checkoutBusy = false;
+        if (btn) { btn.disabled = false; btn.textContent = "Checkout"; }
+        showNote("<strong>Couldn&rsquo;t start checkout.</strong> " + esc(err.message));
+      });
   }
 
   /* ---------- wiring ---------- */
@@ -245,6 +289,13 @@
     build();
     load();
     render();
+
+    /* The page ships with the "checkout isn't connected" note visible, so it still
+       shows if JS fails. Once checkout is live, take it down. */
+    if (CHECKOUT_ENABLED) {
+      var storeNote = document.getElementById("storeNote");
+      if (storeNote) storeNote.hidden = true;
+    }
 
     document.addEventListener("click", function (e) {
       var t = e.target;

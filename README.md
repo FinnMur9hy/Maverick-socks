@@ -8,6 +8,9 @@ no framework, no dependencies.
 ```
 .
 ├── index.html          # the whole storefront (one page, products included)
+├── products.json       # server-side price list (what customers are charged)
+├── success.html        # post-payment confirmation
+├── netlify/functions/  # Stripe Checkout session creator
 ├── css/styles.css
 ├── js/
 │   ├── cart.js         # basket state + drawer UI
@@ -30,30 +33,52 @@ Then visit the printed URL.
 
 ## Cart & checkout
 
-The basket is our own code — [`js/cart.js`](js/cart.js). It holds state in
-`localStorage`, renders the slide-in drawer, and reads every product straight off
-the `data-item-*` attributes on the `[data-add-to-cart]` buttons in `index.html`.
-No third-party cart service is involved, so nothing external can take the cart
-down.
+The basket is our own code — [`js/cart.js`](js/cart.js). State lives in
+`localStorage`, the drawer is rendered here, and products are read from the
+`data-item-*` attributes on the `[data-add-to-cart]` buttons in `index.html`.
 
-**Payments are not connected yet.** `CHECKOUT_ENABLED` at the top of `cart.js` is
-`false`, and the Checkout button explains that instead of pretending to charge.
-To go live you need a payment provider — wire it into the `handoff()` function in
-the same file and flip the flag.
+Checkout goes through **Stripe Checkout**, via a Netlify function at
+[`netlify/functions/create-checkout-session.mjs`](netlify/functions/create-checkout-session.mjs).
+No npm dependencies — it calls Stripe's REST API with `fetch`.
 
-Editing the catalogue: product IDs, names and prices live on the buttons in
-[`index.html`](index.html). When you change a price, change it in **both** the
-button's `data-item-price` (what the cart charges) and the visible
-`.product-price` next to it (what the customer reads) — nothing keeps them in
-sync for you.
+### How prices are protected
 
-The cards are deliberately **plain static markup** rather than JavaScript-injected.
-Hosted checkouts validate orders by fetching the product URL and scanning the
-returned HTML, so keeping them static leaves that door open.
+The browser sends **only product IDs and quantities**. The function looks up prices
+in [`products.json`](products.json) and builds the Stripe line items from those. If
+it trusted prices from the page, anyone could edit them in devtools and buy a
+3-pack for a penny.
 
-> A previous version of this site used Snipcart. It was removed after its
-> `/api/cart` endpoint returned persistent HTTP 500s for this store. The
-> integration is recoverable from git history if you ever want it back.
+The trade-off is that a price lives in **three** places, and nothing syncs them:
+
+| Where | What it does |
+|---|---|
+| `products.json` (pence) | what the customer is actually charged |
+| `data-item-price` in `index.html` | what the cart drawer totals up |
+| `.product-price` in `index.html` | what the customer reads |
+
+Change all three together.
+
+### Switching it on
+
+1. Create a Stripe account and complete business verification.
+2. In Netlify: **Site configuration → Environment variables**, add
+   `STRIPE_SECRET_KEY` (`sk_test_…` to trial it, `sk_live_…` for real money).
+   It belongs there and **never in this repo**.
+3. In `js/cart.js`, set `CHECKOUT_ENABLED = true`. That one switch turns on the
+   real checkout and hides the "checkout isn't connected" note on the page.
+4. Test with card `4242 4242 4242 4242`, any future expiry, any CVC.
+
+Card payments work as soon as the key is set. **PayPal, Apple Pay and Google Pay**
+are then just toggles in **Stripe Dashboard → Settings → Payment methods** — the
+function deliberately omits `payment_method_types`, so whatever is enabled there
+shows up at checkout with no code change.
+
+Shipping rates live in `products.json` under `shipping` (free over £30, otherwise
+£3.95 — change `standardPence` if that is wrong). After paying, customers land on
+`success.html`, which clears their basket.
+
+> A previous version used Snipcart. It was dropped after its `/api/cart` endpoint
+> returned persistent HTTP 500s for this store. It is recoverable from git history.
 
 ## Images
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order confirmed — Maverick Socks</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=3" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,600;0,700;0,800;1,500&family=Newsreader:ital,opsz,wght@1,18..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .thanks-wrap { min-height: 78vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; }
+    .thanks-wrap .headline { margin-bottom: 16px; }
+    .thanks-wrap p { color: var(--ink-dim); margin: 0 0 26px; max-width: 46ch; }
+    .thanks-inner { display: flex; flex-direction: column; align-items: center; }
+  </style>
+</head>
+<body id="top">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/"><img class="brand-logo" src="assets/logo-black.png" alt="Maverick Socks" /></a>
+    </div>
+  </header>
+  <main>
+    <div class="thanks-wrap">
+      <div class="thanks-inner">
+        <h1 class="headline"><em>Order confirmed</em> <b>&mdash; you&rsquo;re set<span class="dot">.</span></b></h1>
+        <p>
+          Thanks for backing us. A receipt is on its way to your email, and we&rsquo;ll
+          send tracking as soon as your socks are on the way. <span class="hashtag">#BeAMaverick</span>
+        </p>
+        <a class="btn btn--dark" href="/#range">Back to the shop</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    /* The order is paid, so the basket is spent — clear it before they navigate back. */
+    try { localStorage.removeItem("maverick-cart-v1"); } catch (e) {}
+  </script>
+</body>
+</html>
