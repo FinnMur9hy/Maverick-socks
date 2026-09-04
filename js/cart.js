@@ -15,7 +15,7 @@
 
   /* Flip to true once STRIPE_SECRET_KEY is set in Netlify. This one switch turns on
      the real checkout AND hides the "checkout isn't connected" note on the page. */
-  var CHECKOUT_ENABLED = false;
+  var CHECKOUT_ENABLED = true;
   var CHECKOUT_ENDPOINT = "/api/create-checkout-session";
 
   /* ---------- state ---------- */
