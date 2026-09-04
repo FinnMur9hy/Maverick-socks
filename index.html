@@ -357,7 +357,11 @@
     </div>
   </footer>
 
-  <div hidden id="snipcart" data-api-key="YOUR_SNIPCART_PUBLIC_API_KEY" data-config-modal-style="side" data-currency="gbp"></div>
+  <!-- Snipcart TEST-mode public key. No real money moves while this is in place and the
+       cart shows a test-mode banner. Swap it for the Live public key (Snipcart dashboard
+       → Account → API keys) before taking real orders. Public keys are meant to be
+       readable by every visitor; the SECRET key must never go in this file. -->
+  <div hidden id="snipcart" data-api-key="NDlhNjI2ZmQtMGI0ZC00OWVkLWE0MjctY2ZmODc2M2Y4OGE5NjM5MjQxMzMzMTgwNTU4Njg2" data-config-modal-style="side" data-currency="gbp"></div>
 
   <script src="js/main.js"></script>
 </body>

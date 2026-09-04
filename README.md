@@ -28,23 +28,30 @@ Then visit the printed URL.
 
 ## Connect checkout (Snipcart)
 
-The cart is wired up but **inactive until you add an API key**. Until then the
-"Add to cart" buttons show a reminder toast instead of doing nothing.
+The cart is live and currently running on Snipcart's **TEST key** — no real money
+moves, and Snipcart shows a test-mode banner in the cart. Use test card
+`4242 4242 4242 4242` (any future expiry / any CVC) to place practice orders.
 
-1. Create a free account at <https://app.snipcart.com>.
-2. In **Account → API keys**, copy the **Public API key**.
-3. In `index.html`, replace `YOUR_SNIPCART_PUBLIC_API_KEY` in the
-   `<div id="snipcart" ...>` near the bottom of the file.
-4. In the Snipcart dashboard:
-   - set your store **currency** to GBP (or change `data-currency` in `index.html`),
-   - add your deployed domain (and `localhost`) under **Domains & URLs**,
-   - connect a payment gateway (Stripe, etc.),
-   - configure shipping and tax.
-5. Snipcart validates every order by fetching `data-item-url` (`/`) and scanning
-   the returned HTML for an element with the `snipcart-add-item` class and a
-   matching `data-item-id`. The product cards are therefore **plain static
-   markup** in `index.html` — if you ever move them into JavaScript, Snipcart
-   will see an empty page and reject checkouts.
+**To go live:** in **Account → API keys** copy the **Live** public API key and
+replace the `data-api-key` value on the `<div id="snipcart" ...>` near the bottom
+of `index.html`. Public keys are readable by every visitor by design, so they
+belong in the HTML — the **secret key never does**; keep it out of this repo.
+
+If the key is ever removed or replaced with a placeholder, `main.js` falls back to
+showing a reminder toast rather than letting "Add to cart" fail silently.
+
+In the Snipcart dashboard you still need to:
+
+- set your store **currency** to GBP (or change `data-currency` in `index.html`),
+- add `mavericksportswear.com` (and `localhost`) under **Domains & URLs**,
+- connect a payment gateway (Stripe, etc.),
+- configure shipping and tax.
+
+Snipcart validates every order by fetching `data-item-url` (`/`) and scanning the
+returned HTML for an element with the `snipcart-add-item` class and a matching
+`data-item-id`. The product cards are therefore **plain static markup** in
+`index.html` — if you ever move them into JavaScript, Snipcart will see an empty
+page and reject checkouts.
 
 Product IDs, names and prices live in the `.snipcart-add-item` buttons in
 [`index.html`](index.html). When you change a price, change it in **both** the
