@@ -2,14 +2,16 @@
 
 Storefront for **Maverick Socks** — sports performance grip socks.
 
-Static site (HTML / CSS / vanilla JS) with a [Snipcart](https://snipcart.com) cart
-and checkout. No build step, no framework.
+Static site (HTML / CSS / vanilla JS) with a self-contained cart. No build step,
+no framework, no dependencies.
 
 ```
 .
 ├── index.html          # the whole storefront (one page, products included)
 ├── css/styles.css
-├── js/main.js          # nav, hero, carousel, cart guard, toast
+├── js/
+│   ├── cart.js         # basket state + drawer UI
+│   └── main.js         # nav, hero, carousel, smooth scroll
 └── assets/             # logos + product photography
 ```
 
@@ -26,38 +28,32 @@ python -m http.server 8000
 
 Then visit the printed URL.
 
-## Connect checkout (Snipcart)
+## Cart & checkout
 
-The cart is live and currently running on Snipcart's **TEST key** — no real money
-moves, and Snipcart shows a test-mode banner in the cart. Use test card
-`4242 4242 4242 4242` (any future expiry / any CVC) to place practice orders.
+The basket is our own code — [`js/cart.js`](js/cart.js). It holds state in
+`localStorage`, renders the slide-in drawer, and reads every product straight off
+the `data-item-*` attributes on the `[data-add-to-cart]` buttons in `index.html`.
+No third-party cart service is involved, so nothing external can take the cart
+down.
 
-**To go live:** in **Account → API keys** copy the **Live** public API key and
-replace the `data-api-key` value on the `<div id="snipcart" ...>` near the bottom
-of `index.html`. Public keys are readable by every visitor by design, so they
-belong in the HTML — the **secret key never does**; keep it out of this repo.
+**Payments are not connected yet.** `CHECKOUT_ENABLED` at the top of `cart.js` is
+`false`, and the Checkout button explains that instead of pretending to charge.
+To go live you need a payment provider — wire it into the `handoff()` function in
+the same file and flip the flag.
 
-If the key is ever removed or replaced with a placeholder, `main.js` falls back to
-showing a reminder toast rather than letting "Add to cart" fail silently.
-
-In the Snipcart dashboard you still need to:
-
-- set your store **currency** to GBP (or change `data-currency` in `index.html`),
-- add `mavericksportswear.com` (and `localhost`) under **Domains & URLs**,
-- connect a payment gateway (Stripe, etc.),
-- configure shipping and tax.
-
-Snipcart validates every order by fetching `data-item-url` (`/`) and scanning the
-returned HTML for an element with the `snipcart-add-item` class and a matching
-`data-item-id`. The product cards are therefore **plain static markup** in
-`index.html` — if you ever move them into JavaScript, Snipcart will see an empty
-page and reject checkouts.
-
-Product IDs, names and prices live in the `.snipcart-add-item` buttons in
+Editing the catalogue: product IDs, names and prices live on the buttons in
 [`index.html`](index.html). When you change a price, change it in **both** the
-button's `data-item-price` (what Snipcart charges and validates against) and the
-visible `.product-price` next to it (what the customer reads) — nothing keeps
-them in sync for you.
+button's `data-item-price` (what the cart charges) and the visible
+`.product-price` next to it (what the customer reads) — nothing keeps them in
+sync for you.
+
+The cards are deliberately **plain static markup** rather than JavaScript-injected.
+Hosted checkouts validate orders by fetching the product URL and scanning the
+returned HTML, so keeping them static leaves that door open.
+
+> A previous version of this site used Snipcart. It was removed after its
+> `/api/cart` endpoint returned persistent HTTP 500s for this store. The
+> integration is recoverable from git history if you ever want it back.
 
 ## Images
 

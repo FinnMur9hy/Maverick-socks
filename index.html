@@ -19,8 +19,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Newsreader:ital,opsz,wght@1,18..72,400;1,18..72,500&display=swap" rel="stylesheet" />
 
-  <link rel="preconnect" href="https://app.snipcart.com" />
-  <link rel="preconnect" href="https://cdn.snipcart.com" />
 
   <link rel="stylesheet" href="css/styles.css" />
 </head>
@@ -55,8 +53,8 @@
         <a class="icon-link" href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Maverick Socks on Instagram">
           <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.25 2.2.42.6.22 1 .48 1.4.9.42.4.68.8.9 1.4.17.4.36 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.8-.42 2.2-.22.6-.48 1-.9 1.4-.4.42-.8.68-1.4.9-.4.17-1 .36-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-1.8-.25-2.2-.42-.6-.22-1-.48-1.4-.9-.42-.4-.68-.8-.9-1.4-.17-.4-.36-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-1.8.42-2.2.22-.6.48-1 .9-1.4.4-.42.8-.68 1.4-.9.4-.17 1-.36 2.2-.42C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.07-.9.04-1.4.2-1.7.33-.43.17-.74.37-1.06.7-.32.31-.52.62-.7 1.05-.13.3-.29.8-.33 1.7C3.7 8.5 3.7 8.9 3.7 12s0 3.5.07 4.7c.04.9.2 1.4.33 1.7.17.43.37.74.7 1.06.31.32.62.52 1.05.7.3.13.8.29 1.7.33 1.2.06 1.6.07 4.7.07s3.5 0 4.7-.07c.9-.04 1.4-.2 1.7-.33.43-.17.74-.37 1.06-.7.32-.31.52-.62.7-1.05.13-.3.29-.8.33-1.7.06-1.2.07-1.6.07-4.7s0-3.5-.07-4.7c-.04-.9-.2-1.4-.33-1.7a2.9 2.9 0 0 0-.7-1.06 2.9 2.9 0 0 0-1.05-.7c-.3-.13-.8-.29-1.7-.33C15.5 4 15.1 4 12 4Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8a3.1 3.1 0 1 0 0-6.2 3.1 3.1 0 0 0 0 6.2Zm5.1-8.4a1.15 1.15 0 1 1 0-2.3 1.15 1.15 0 0 1 0 2.3Z"/></svg>
         </a>
-        <button class="cart-btn snipcart-checkout" type="button" aria-label="Open cart">
-          <span>Cart</span><span class="cart-count snipcart-items-count">0</span>
+        <button class="cart-btn" type="button" data-cart-open aria-label="Open cart">
+          <span>Cart</span><span class="cart-count" data-cart-count>0</span>
         </button>
         <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Menu">
           <span></span><span></span><span></span>
@@ -104,9 +102,9 @@
         </div>
       </div>
       <div class="carousel" data-carousel>
-        <!-- Products are static markup on purpose: Snipcart validates each order by
-             fetching data-item-url and scanning the HTML for a matching
-             .snipcart-add-item / data-item-id. JS-injected cards would be invisible to it. -->
+        <!-- Product cards are static markup on purpose: the data-item-* attributes below are
+             the single source of truth for the cart (js/cart.js reads them), and they stay
+             crawlable by a hosted checkout that validates orders server-side. -->
         <div class="carousel-track" id="productTrack">
           <article class="product-card">
             <div class="product-media">
@@ -118,7 +116,7 @@
               <p class="product-blurb">The original. White with the black wing motif and a full-contact grip sole.</p>
               <div class="product-foot">
                 <span class="product-price">&pound;12.99</span>
-                <button type="button" class="btn btn--dark buy-btn snipcart-add-item"
+                <button type="button" class="btn btn--dark buy-btn" data-add-to-cart
                   data-item-id="mav-grip-white"
                   data-item-name="Maverick Grip Socks &mdash; White"
                   data-item-price="12.99"
@@ -139,7 +137,7 @@
               <p class="product-blurb">Same grip, blacked out. Woven logo cuff and silicone grips inside and out.</p>
               <div class="product-foot">
                 <span class="product-price">&pound;12.99</span>
-                <button type="button" class="btn btn--dark buy-btn snipcart-add-item"
+                <button type="button" class="btn btn--dark buy-btn" data-add-to-cart
                   data-item-id="mav-grip-black"
                   data-item-name="Maverick Grip Socks &mdash; Black"
                   data-item-price="12.99"
@@ -161,7 +159,7 @@
               <p class="product-blurb">Three pairs of your choosing so there&rsquo;s always a clean set in the kit bag. Save &pound;3.98.</p>
               <div class="product-foot">
                 <span class="product-price">&pound;34.99</span>
-                <button type="button" class="btn btn--dark buy-btn snipcart-add-item"
+                <button type="button" class="btn btn--dark buy-btn" data-add-to-cart
                   data-item-id="mav-grip-3pack"
                   data-item-name="Maverick Grip Socks &mdash; 3-Pack"
                   data-item-price="34.99"
@@ -176,9 +174,9 @@
       </div>
       <div class="container">
         <div class="carousel-bar"><span data-carousel-bar></span></div>
-        <p class="store-note" id="storeNote" hidden>
+        <p class="store-note" id="storeNote">
           <strong>Checkout isn&rsquo;t connected yet.</strong>
-          Add your Snipcart public API key in <code>index.html</code> to take live payments &mdash; see the README.
+          Add what you like to the cart &mdash; card payments are being switched on shortly.
         </p>
       </div>
     </section>
@@ -357,26 +355,7 @@
     </div>
   </footer>
 
-  <!-- Snipcart. This is the TEST-mode public key: no real money moves and the cart
-       shows a test banner. Swap it for the Live public key (dashboard -> Account ->
-       API keys) before taking real orders. Public keys are meant to be readable by
-       every visitor; the SECRET key must never go in this file.
-
-       This is Snipcart's current loader snippet. It resolves version "3.0" to the
-       latest v3 cart instead of pinning an old build, and defers loading until the
-       first user interaction. -->
-  <div hidden id="snipcart"></div>
-  <script>
-    window.SnipcartSettings = {
-      publicApiKey: "NDlhNjI2ZmQtMGI0ZC00OWVkLWE0MjctY2ZmODc2M2Y4OGE5NjM5MjQxMzMzMTgwNTU4Njg2",
-      loadStrategy: "on-user-interaction",
-      modalStyle: "side",
-      currency: "gbp"
-    };
-
-    (function(){var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var m,g;(g=(m=window.SnipcartSettings).loadCSS)!=null||(m.loadCSS=!0);var y=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,f=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(f.forEach(function(t){return document.addEventListener(t,o)}),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],n=document.querySelector("#snipcart"),i=document.querySelector('src[src^="'.concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,'"][src$="snipcart.js"]')),e=document.querySelector('link[href^="'.concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,'"][href$="snipcart.css"]'));n||(n=document.createElement("div"),n.id="snipcart",n.setAttribute("hidden","true"),document.body.appendChild(n)),h(n),i||(i=document.createElement("script"),i.src="".concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,"/themes/v").concat(window.SnipcartSettings.version,"/default/snipcart.js"),i.async=!0,t.appendChild(i)),!e&&window.SnipcartSettings.loadCSS&&(e=document.createElement("link"),e.rel="stylesheet",e.type="text/css",e.href="".concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,"/themes/v").concat(window.SnipcartSettings.version,"/default/snipcart.css"),t.prepend(e)),f.forEach(function(v){return document.removeEventListener(v,o)})}function h(t){!y||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
-  </script>
-
+  <script src="js/cart.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

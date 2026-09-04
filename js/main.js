@@ -95,42 +95,4 @@
     });
   });
 
-  // Guard: Snipcart's own loader snippet in index.html injects the cart. This only
-  // stops "Add to cart" from silently doing nothing if no real key is configured.
-  var key = (window.SnipcartSettings || {}).publicApiKey || "";
-  var configured = key.indexOf("YOUR_") !== 0 && key.length > 20;
-
-  if (!configured) {
-    var note = document.getElementById("storeNote");
-    if (note) note.hidden = false;
-
-    document.addEventListener(
-      "click",
-      function (e) {
-        var btn = e.target.closest(".snipcart-add-item, .snipcart-checkout");
-        if (!btn) return;
-        e.preventDefault();
-        e.stopPropagation();
-        showToast("Checkout isn’t connected yet — add your Snipcart API key (see README).");
-      },
-      true
-    );
-  }
-
-  var toastEl;
-  var toastTimer;
-  function showToast(message) {
-    if (!toastEl) {
-      toastEl = document.createElement("div");
-      toastEl.className = "toast";
-      toastEl.setAttribute("role", "status");
-      document.body.appendChild(toastEl);
-    }
-    toastEl.textContent = message;
-    toastEl.classList.add("is-visible");
-    window.clearTimeout(toastTimer);
-    toastTimer = window.setTimeout(function () {
-      toastEl.classList.remove("is-visible");
-    }, 3200);
-  }
 })();
