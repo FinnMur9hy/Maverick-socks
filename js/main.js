@@ -95,24 +95,12 @@
     });
   });
 
-  // Guard: if Snipcart has not been configured with a real API key,
-  // stop the add-to-cart buttons from silently doing nothing.
-  var mount = document.getElementById("snipcart");
-  var key = mount ? mount.getAttribute("data-api-key") : "";
-  var configured = key && key.indexOf("YOUR_") !== 0 && key.length > 20;
+  // Guard: Snipcart's own loader snippet in index.html injects the cart. This only
+  // stops "Add to cart" from silently doing nothing if no real key is configured.
+  var key = (window.SnipcartSettings || {}).publicApiKey || "";
+  var configured = key.indexOf("YOUR_") !== 0 && key.length > 20;
 
-  if (configured) {
-    var SNIPCART_VERSION = "3.7.1";
-    var css = document.createElement("link");
-    css.rel = "stylesheet";
-    css.href = "https://cdn.snipcart.com/themes/v" + SNIPCART_VERSION + "/default/snipcart.css";
-    document.head.appendChild(css);
-
-    var script = document.createElement("script");
-    script.async = true;
-    script.src = "https://cdn.snipcart.com/themes/v" + SNIPCART_VERSION + "/default/snipcart.js";
-    document.body.appendChild(script);
-  } else {
+  if (!configured) {
     var note = document.getElementById("storeNote");
     if (note) note.hidden = false;
 
