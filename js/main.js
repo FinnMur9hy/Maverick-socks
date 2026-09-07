@@ -95,4 +95,124 @@
     });
   });
 
+  // The Technology: annotated sock diagram.
+  // Boxes sit either side of the photo on desktop and stack beneath it on mobile.
+  // x/y are percentages of the photo, so the pins track it at any size.
+  (function () {
+    var radial = document.getElementById("radial");
+    var pinLayer = document.getElementById("pinLayer");
+    var wires = document.getElementById("radialWires");
+    if (!radial || !pinLayer || !wires) return;
+
+    var FEATURES = [
+      { n: 1, t: "Durability",          d: "High quality materials used to increase the longevity of the sock’s performance, wash after wash.", x: 48, y: 13, side: "l", row: 1 },
+      { n: 2, t: "Anatomy",             d: "A specialised sock shaped and marked for each individual foot — left and right specific.",            x: 46, y: 46, side: "l", row: 2 },
+      { n: 3, t: "Blister protection",  d: "Thicker sole and reinforced toe to prevent blisters and increase comfort where you land.",                 x: 22, y: 87, side: "l", row: 3 },
+      { n: 4, t: "Mesh air channels",   d: "Breathable mesh through the mid-foot reduces moisture and increases comfort for the full match.",           x: 64, y: 60, side: "r", row: 1 },
+      { n: 5, t: "Grip inside and out", d: "Frequent grip contact points on both sides of the sock to increase traction — your foot locks to the sock, the sock locks to the boot.", x: 40, y: 76, side: "r", row: 2 },
+      { n: 6, t: "High quality grips",  d: "Strong grips that provide better traction as you wear them in and your feet warm up.",                      x: 74, y: 70, side: "r", row: 3 }
+    ];
+
+    var NS = "http://www.w3.org/2000/svg";
+    var STACKED = 980;
+    var active = 0;
+
+    FEATURES.forEach(function (f, i) {
+      var slot = document.createElement("div");
+      slot.className = f.side === "l" ? "r-left" : "r-right";
+      slot.style.gridRow = String(f.row);
+
+      var box = document.createElement("button");
+      box.type = "button";
+      box.className = "fbox";
+      box.setAttribute("aria-expanded", i === 0 ? "true" : "false");
+      box.innerHTML =
+        '<span class="fbox-head"><span class="fbox-n">' + f.n + "</span>" +
+        '<span class="fbox-t">' + f.t + "</span></span>" +
+        '<span class="fbox-d">' + f.d + "</span>";
+      box.addEventListener("click", function () { select(i); });
+      slot.appendChild(box);
+      radial.appendChild(slot);
+
+      var pin = document.createElement("button");
+      pin.type = "button";
+      pin.className = "pin";
+      pin.style.left = f.x + "%";
+      pin.style.top = f.y + "%";
+      pin.setAttribute("aria-expanded", i === 0 ? "true" : "false");
+      pin.setAttribute("aria-label", f.t);
+      pin.textContent = String(f.n);
+      pin.addEventListener("click", function () {
+        select(i);
+        // Stacked, the box is a long way below the pin, so a tap would otherwise
+        // look like nothing happened.
+        if (window.innerWidth <= STACKED) bringIntoView(boxes()[i]);
+      });
+      pinLayer.appendChild(pin);
+    });
+
+    function boxes() { return radial.querySelectorAll(".fbox"); }
+
+    function bringIntoView(el) {
+      var header = document.getElementById("siteHeader");
+      var offset = (header ? header.offsetHeight : 0) + 20;
+      var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    }
+
+    function select(i) {
+      active = i;
+      var bs = boxes();
+      for (var k = 0; k < bs.length; k++) {
+        bs[k].setAttribute("aria-expanded", k === i ? "true" : "false");
+        pinLayer.children[k].setAttribute("aria-expanded", k === i ? "true" : "false");
+      }
+      drawWires();
+    }
+
+    function drawWires() {
+      wires.innerHTML = "";
+      if (window.innerWidth <= STACKED) return;
+
+      var base = radial.getBoundingClientRect();
+      var bs = boxes();
+
+      FEATURES.forEach(function (f, i) {
+        var br = bs[i].getBoundingClientRect();
+        var pr = pinLayer.children[i].getBoundingClientRect();
+
+        var bx = (f.side === "l" ? br.right : br.left) - base.left;
+        var by = br.top + br.height / 2 - base.top;
+        var px = pr.left + pr.width / 2 - base.left;
+        var py = pr.top + pr.height / 2 - base.top;
+        var elbow = bx + (f.side === "l" ? 16 : -16);
+        var on = i === active;
+
+        var path = document.createElementNS(NS, "path");
+        path.setAttribute("d", "M" + bx + "," + by + " L" + elbow + "," + by + " L" + px + "," + py);
+        path.setAttribute("fill", "none");
+        path.setAttribute("stroke", on ? "#12b5a5" : "#dcdcda");
+        path.setAttribute("stroke-width", on ? "1.5" : "1");
+        wires.appendChild(path);
+
+        var dot = document.createElementNS(NS, "circle");
+        dot.setAttribute("cx", bx);
+        dot.setAttribute("cy", by);
+        dot.setAttribute("r", on ? "3" : "2.5");
+        dot.setAttribute("fill", on ? "#12b5a5" : "#dcdcda");
+        wires.appendChild(dot);
+      });
+    }
+
+    var raf;
+    window.addEventListener("resize", function () {
+      window.cancelAnimationFrame(raf);
+      raf = window.requestAnimationFrame(drawWires);
+    });
+    // The photo drives the pin and wire geometry, so wait for it to lay out.
+    var photo = radial.querySelector(".radial-stage img");
+    if (photo && !photo.complete) photo.addEventListener("load", drawWires);
+    drawWires();
+  })();
+
 })();
