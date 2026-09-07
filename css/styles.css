@@ -78,10 +78,12 @@ a { color: inherit; text-decoration: none; }
 .promo-track {
   display: flex; gap: 26px; width: max-content;
   font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-  animation: ticker 34s linear infinite;
+  animation: ticker 42s linear infinite;
 }
 .promo-track b { color: var(--accent); }
-@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+/* Travels left to right. Starting at -50% and ending at 0 scrolls that way while
+   still looping seamlessly, because the message list is duplicated in the markup. */
+@keyframes ticker { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
 /* ---------- Header ---------- */
 .site-header {
