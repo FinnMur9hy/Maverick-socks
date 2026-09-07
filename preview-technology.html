@@ -155,7 +155,12 @@
       p.setAttribute("aria-expanded", i === 0 ? "true" : "false");
       p.setAttribute("aria-label", f.t);
       p.textContent = String(f.n);
-      p.addEventListener("click", function () { select(i); });
+      p.addEventListener("click", function () {
+        select(i);
+        if (window.innerWidth <= 900) {
+          radial.querySelectorAll(".fbox")[i].scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      });
       pinlayer.appendChild(p);
     });
 
