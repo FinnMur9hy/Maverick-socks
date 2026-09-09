@@ -105,11 +105,11 @@
     if (!radial || !pinLayer || !wires) return;
 
     var FEATURES = [
-      { n: 1, t: "Durability",          d: "High quality materials used to increase the longevity of the sock’s performance, wash after wash.", x: 48, y: 13, side: "l", row: 1 },
-      { n: 2, t: "Anatomy",             d: "A specialised sock shaped and marked for each individual foot — left and right specific.",            x: 46, y: 46, side: "l", row: 2 },
-      { n: 3, t: "Blister protection",  d: "Thicker sole and reinforced toe to prevent blisters and increase comfort where you land.",                 x: 22, y: 87, side: "l", row: 3 },
-      { n: 4, t: "Mesh air channels",   d: "Breathable mesh through the mid-foot reduces moisture and increases comfort for the full match.",           x: 64, y: 60, side: "r", row: 1 },
-      { n: 5, t: "Grip inside and out", d: "Frequent grip contact points on both sides of the sock to increase traction — your foot locks to the sock, the sock locks to the boot.", x: 40, y: 76, side: "r", row: 2 },
+      { n: 1, t: "Durability",          d: "High quality materials used to increase the longevity of the sock’s performance, wash after wash.", x: 48, y: 30, side: "l", row: 1 },
+      { n: 2, t: "Anatomy",             d: "A specialised sock shaped and marked for each individual foot — left and right specific.",            x: 17, y: 91, side: "l", row: 2 },
+      { n: 3, t: "Blister protection",  d: "Thicker sole and reinforced toe to prevent blisters and increase comfort where you land.",                 x: 29, y: 89, side: "l", row: 3 },
+      { n: 4, t: "Mesh air channels",   d: "Breathable mesh through the mid-foot reduces moisture and increases comfort for the full match.",           x: 55, y: 60, side: "r", row: 1 },
+      { n: 5, t: "Grip inside and out", d: "Frequent grip contact points on both sides of the sock to increase traction — your foot locks to the sock, the sock locks to the boot.", x: 72, y: 79, side: "r", row: 2 },
       { n: 6, t: "High quality grips",  d: "Strong grips that provide better traction as you wear them in and your feet warm up.",                      x: 74, y: 70, side: "r", row: 3 }
     ];
 
