@@ -186,9 +186,6 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
 .band { background: var(--band); color: #fff; padding: 64px 0; text-align: center; }
 .band .headline { justify-content: center; }
 .band-sub { color: rgba(255,255,255,0.72); margin: 16px auto 0; max-width: 52ch; }
-/* The packaging icons are black artwork on transparency, so they need inverting to
-   read as white on the dark band. */
-.band-icons { width: 100%; max-width: 620px; height: auto; margin: 36px auto 0; filter: invert(1); }
 
 /* ---------- The Technology: annotated sock diagram ---------- */
 .radial {
