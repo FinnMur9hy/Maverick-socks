@@ -174,6 +174,15 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
 .product-body { padding: 16px 2px 0; display: flex; flex-direction: column; gap: 6px; flex: 1; }
 .product-body h3 { font-size: 0.92rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em; }
 .product-blurb { margin: 0; color: var(--ink-dim); font-size: 0.85rem; flex: 1; }
+.variant-label { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-dim); margin-top: 4px; }
+.variant-select {
+  width: 100%; font: inherit; font-size: 0.85rem; color: var(--ink);
+  background: var(--paper); border: 1px solid var(--line); border-radius: 8px;
+  padding: 9px 11px; cursor: pointer;
+}
+.variant-select:hover { border-color: var(--ink-dim); }
+.variant-select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
 .product-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; }
 .product-price { font-weight: 700; font-size: 1rem; }
 .buy-btn { padding: 11px 20px; font-size: 0.7rem; }

@@ -274,11 +274,27 @@
   /* ---------- wiring ---------- */
 
   function productFrom(btn) {
+    var id = btn.getAttribute("data-item-id");
+    var name = btn.getAttribute("data-item-name") || "Item";
+
+    /* Variant products (the 3-pack colour mix) take their id and name from a select.
+       Each mix is a separate id in products.json, so it becomes its own cart line and
+       the chosen colours travel through to Stripe and the order. */
+    var selectId = btn.getAttribute("data-variant-from");
+    if (selectId) {
+      var sel = document.getElementById(selectId);
+      var opt = sel && sel.options[sel.selectedIndex];
+      if (opt && opt.value) {
+        id = opt.value;
+        name = opt.getAttribute("data-name") || name;
+      }
+    }
+
     var price = parseFloat(btn.getAttribute("data-item-price"));
-    if (!btn.getAttribute("data-item-id") || isNaN(price)) return null;
+    if (!id || isNaN(price)) return null;
     return {
-      id: btn.getAttribute("data-item-id"),
-      name: btn.getAttribute("data-item-name") || "Item",
+      id: id,
+      name: name,
       price: price,
       image: btn.getAttribute("data-item-image") || "",
       max: parseInt(btn.getAttribute("data-item-max-quantity"), 10) || 10

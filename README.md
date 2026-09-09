@@ -58,6 +58,19 @@ The trade-off is that a price lives in **three** places, and nothing syncs them:
 
 Change all three together.
 
+### The 3-pack colour mix
+
+Two colours across three pairs gives exactly four combinations, so the pack uses a
+plain `<select>` rather than counters that have to add up to three.
+
+Each `<option>` value is a **separate product id** (`mav-grip-3pack-2w1b` and so on)
+with its own entry in `products.json`. That means the chosen mix is a real cart line,
+survives a page reload, and reaches Stripe in the line-item name — so the order tells
+you what to pack. `js/cart.js` picks the id up via `data-variant-from` on the button.
+
+If you add a colour, add the new `<option>` **and** the matching `products.json` entry
+— an option with no entry is rejected at checkout as an unknown product.
+
 ### Switching it on
 
 1. Create a Stripe account and complete business verification.

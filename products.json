@@ -1,5 +1,6 @@
 {
   "_comment": "Server-side price list. This is what customers are actually charged — the checkout function reads prices from here and ignores anything the browser sends. Prices are in PENCE (integers), because that is what Stripe expects. When you change a price, change it here AND in the matching data-item-price / .product-price in index.html.",
+  "_variants": "The 3-pack has one entry per colour mix, matching the <option> values on the pack's select in index.html. The plain 'mav-grip-3pack' id is kept only so carts saved before the mix selector existed can still check out.",
   "currency": "gbp",
   "products": {
     "mav-grip-white": {
@@ -11,6 +12,26 @@
       "name": "Maverick Grip Socks — Black",
       "price": 1299,
       "image": "https://mavericksportswear.com/assets/product-black.jpg"
+    },
+    "mav-grip-3pack-3w": {
+      "name": "Maverick Grip Socks — 3-Pack (3 White)",
+      "price": 3200,
+      "image": "https://mavericksportswear.com/assets/product-3pack.jpg"
+    },
+    "mav-grip-3pack-2w1b": {
+      "name": "Maverick Grip Socks — 3-Pack (2 White, 1 Black)",
+      "price": 3200,
+      "image": "https://mavericksportswear.com/assets/product-3pack.jpg"
+    },
+    "mav-grip-3pack-1w2b": {
+      "name": "Maverick Grip Socks — 3-Pack (1 White, 2 Black)",
+      "price": 3200,
+      "image": "https://mavericksportswear.com/assets/product-3pack.jpg"
+    },
+    "mav-grip-3pack-3b": {
+      "name": "Maverick Grip Socks — 3-Pack (3 Black)",
+      "price": 3200,
+      "image": "https://mavericksportswear.com/assets/product-3pack.jpg"
     },
     "mav-grip-3pack": {
       "name": "Maverick Grip Socks — 3-Pack",
