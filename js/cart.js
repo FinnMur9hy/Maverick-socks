@@ -283,11 +283,11 @@
     var selectId = btn.getAttribute("data-variant-from");
     if (selectId) {
       var sel = document.getElementById(selectId);
-      var opt = sel && sel.options[sel.selectedIndex];
-      if (opt && opt.value) {
-        id = opt.value;
-        name = opt.getAttribute("data-name") || name;
-      }
+      /* No mix chosen yet — refuse rather than falling back to a generic pack. */
+      if (!sel || !sel.value) return null;
+      var opt = sel.options[sel.selectedIndex];
+      id = sel.value;
+      name = (opt && opt.getAttribute("data-name")) || name;
     }
 
     var price = parseFloat(btn.getAttribute("data-item-price"));
@@ -305,6 +305,19 @@
     build();
     load();
     render();
+
+    /* Products with a variant selector can't be added until a choice is made. The
+       button ships disabled in the HTML; this keeps it in step with the select. */
+    var variantBtns = document.querySelectorAll("[data-variant-from]");
+    for (var v = 0; v < variantBtns.length; v++) {
+      (function (btn) {
+        var sel = document.getElementById(btn.getAttribute("data-variant-from"));
+        if (!sel) return;
+        var sync = function () { btn.disabled = !sel.value; };
+        sel.addEventListener("change", sync);
+        sync();
+      })(variantBtns[v]);
+    }
 
     /* The page ships with the "checkout isn't connected" note visible, so it still
        shows if JS fails. Once checkout is live, take it down. */

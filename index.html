@@ -166,15 +166,18 @@
                    in products.json, so the mix reaches Stripe and the order. -->
               <label class="variant-label" for="packMix">Choose your mix</label>
               <select class="variant-select" id="packMix">
+                <option value="" selected disabled>Choose your mix&hellip;</option>
                 <option value="mav-grip-3pack-3w" data-name="Maverick Grip Socks &mdash; 3-Pack (3 White)">3 &times; White</option>
-                <option value="mav-grip-3pack-2w1b" data-name="Maverick Grip Socks &mdash; 3-Pack (2 White, 1 Black)" selected>2 &times; White, 1 &times; Black</option>
+                <option value="mav-grip-3pack-2w1b" data-name="Maverick Grip Socks &mdash; 3-Pack (2 White, 1 Black)">2 &times; White, 1 &times; Black</option>
                 <option value="mav-grip-3pack-1w2b" data-name="Maverick Grip Socks &mdash; 3-Pack (1 White, 2 Black)">1 &times; White, 2 &times; Black</option>
                 <option value="mav-grip-3pack-3b" data-name="Maverick Grip Socks &mdash; 3-Pack (3 Black)">3 &times; Black</option>
               </select>
 
               <div class="product-foot">
                 <span class="product-price">&pound;32.00</span>
-                <button type="button" class="btn btn--dark buy-btn" data-add-to-cart
+                <!-- Starts disabled, so it stays un-addable even if the script fails.
+                     cart.js enables it once a mix is picked. -->
+                <button type="button" class="btn btn--dark buy-btn" data-add-to-cart disabled
                   data-variant-from="packMix"
                   data-item-id="mav-grip-3pack"
                   data-item-name="Maverick Grip Socks &mdash; 3-Pack"

@@ -68,6 +68,11 @@ with its own entry in `products.json`. That means the chosen mix is a real cart 
 survives a page reload, and reaches Stripe in the line-item name — so the order tells
 you what to pack. `js/cart.js` picks the id up via `data-variant-from` on the button.
 
+The select opens on a "Choose your mix…" placeholder and the Add to cart button ships
+`disabled` in the HTML, so the pack can't be added until a mix is picked — and stays
+un-addable if the script fails to load. `cart.js` enables it on `change`, and
+`productFrom()` refuses the add outright if no mix is set.
+
 If you add a colour, add the new `<option>` **and** the matching `products.json` entry
 — an option with no entry is rejected at checkout as an unknown product.
 
