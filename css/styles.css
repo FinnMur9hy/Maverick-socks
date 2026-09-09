@@ -266,6 +266,10 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
 .split-media img { width: 100%; aspect-ratio: 7 / 5; object-fit: cover; border-radius: 12px; }
 .split-copy .headline { margin-bottom: 18px; }
 .split-copy p { margin: 0 0 14px; color: var(--ink-dim); }
+.split-copy .story-slogan {
+  color: var(--accent); font-weight: 800; font-size: 0.95rem;
+  letter-spacing: 0.14em; text-transform: uppercase; margin-top: 22px;
+}
 
 /* ---------- Size table ---------- */
 .size-table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
