@@ -110,8 +110,9 @@ too if you get spam.
 If you host somewhere other than Netlify, these forms won't work — swap the
 `action`/attributes for a service like Formspree, or remove the blocks.
 
-Also update the `hello@mavericksocks.com` address in `index.html` (contact
-section + footer).
+The contact section also lists `contact@mavericksportswear.com`, which is a Google
+Workspace mailbox on the same domain. If that address ever changes, update the
+`mailto:` link and its visible text together.
 
 ## Deploy
 
