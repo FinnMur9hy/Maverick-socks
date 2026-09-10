@@ -11,6 +11,8 @@
   --line: #e2e2e0;
   --band: #0d0d0d;
   --accent: #12b5a5;
+  /* Deal flag only. Dark enough to keep white text readable at badge size. */
+  --sale: #d32f2f;
   --header-h: 80px;
   --container: 1280px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -182,6 +184,9 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
   font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
   padding: 6px 10px; border-radius: 999px;
 }
+/* Sits opposite "Best value" so the two flags never collide, even on a phone. */
+.product-badge--free { left: auto; right: 12px; background: var(--sale); }
+
 .product-body { padding: 16px 2px 0; display: flex; flex-direction: column; gap: 6px; flex: 1; }
 .product-body h3 { font-size: 0.92rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em; }
 .product-blurb { margin: 0; color: var(--ink-dim); font-size: 0.85rem; flex: 1; }
