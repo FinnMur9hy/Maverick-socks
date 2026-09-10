@@ -115,13 +115,15 @@ Keep hero/section images ~2000px wide and under ~300 KB.
 
 ## Forms (Netlify Forms)
 
-The **Contact** and **newsletter** forms use [Netlify Forms](https://docs.netlify.com/forms/setup/).
+The **Contact** form uses [Netlify Forms](https://docs.netlify.com/forms/setup/).
 Nothing to configure in the code — once the site is deployed on Netlify, Netlify
-detects the two forms (`name="contact"` and `name="newsletter"`) at build time and
-captures every submission. On success the visitor lands on `thanks.html`.
+detects the form (`name="contact"`) at build time and captures every submission.
+On success the visitor lands on `thanks.html`. The notification subject line is set
+by the hidden `subject` field in the form, which overrides the dashboard value.
 
-In the Netlify dashboard: **Forms** → pick a form → **Settings & notifications**
-→ add an email notification so submissions reach your inbox. Each form has a
+In the Netlify dashboard: **Project configuration → Notifications → Emails and
+webhooks → Form submission notifications**
+→ add an email notification so submissions reach your inbox. The form has a
 hidden honeypot (`bot-field`) for basic spam protection; enable reCAPTCHA there
 too if you get spam.
 

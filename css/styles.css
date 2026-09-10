@@ -329,12 +329,6 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
 
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--line); padding: 56px 0 30px; }
-.footer-newsletter { max-width: 640px; margin-bottom: 48px; }
-.footer-newsletter label { display: block; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.9rem; margin-bottom: 14px; }
-.nl-row { display: flex; align-items: center; border-bottom: 2px solid var(--ink); }
-.nl-row input { flex: 1; border: 0; padding: 12px 4px; font: inherit; background: transparent; }
-.nl-row input:focus { outline: none; }
-.nl-row button { border: 0; background: transparent; font: inherit; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.82rem; padding: 12px 6px; cursor: pointer; color: var(--accent); }
 
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 36px; }
 .footer-brand .brand-logo { height: 30px; margin-bottom: 14px; }
