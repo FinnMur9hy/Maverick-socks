@@ -315,6 +315,9 @@
         <p class="section-lead">Sizing, orders or wholesale &mdash; send a message.</p>
         <form class="contact-form" name="contact" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="contact" />
+          <!-- Sets the subject of the notification email. Version-controlled here, and
+               it overrides whatever is set in the Netlify dashboard. -->
+          <input type="hidden" name="subject" value="Website enquiry &mdash; mavericksportswear.com" />
           <p class="hp"><label>Leave this empty <input name="bot-field" /></label></p>
           <div class="field-row">
             <label>Name<input type="text" name="name" required /></label>
@@ -332,6 +335,7 @@
     <div class="container">
       <form class="footer-newsletter" name="newsletter" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="newsletter" />
+        <input type="hidden" name="subject" value="New newsletter signup &mdash; mavericksportswear.com" />
         <p class="hp"><label>Leave this empty <input name="bot-field" /></label></p>
         <label for="nl">Join the list for drops &amp; restocks</label>
         <div class="nl-row">
