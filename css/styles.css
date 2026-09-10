@@ -156,7 +156,16 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
 .carousel { overflow: hidden; }
 .carousel-track {
   display: grid; grid-auto-flow: column; grid-auto-columns: minmax(280px, 1fr);
-  gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory;
+  gap: 20px; overflow-x: auto;
+  /* proximity, not mandatory: mandatory forces the track to rest on a snap point, so a
+     short or slow swipe gets dragged back and reads as "the scroll didn't work". */
+  scroll-snap-type: x proximity;
+  /* Keeps a sideways swipe inside the carousel instead of leaking into Safari's
+     back-navigation gesture, which is what steals the swipe on iPhone. */
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  /* Without this, a snapped card jams against the viewport edge and ignores the gutter. */
+  scroll-padding-left: 28px;
   padding: 2px 28px 4px; max-width: var(--container); margin: 0 auto;
   scrollbar-width: none;
 }
@@ -353,6 +362,16 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
   .section { padding: 52px 0; }
   .footer-grid { grid-template-columns: 1fr; }
   .cart-btn span:first-child { display: none; }
+  /* Narrower cards and a tighter gutter leave a much bigger slice of the next card
+     showing, so it's obvious the row scrolls rather than looking like it ends. */
+  .carousel-track {
+    /* A fixed track width, not minmax(0, …) — a zero minimum lets the columns
+       collapse to fit the screen instead of overflowing, and then nothing scrolls. */
+    grid-auto-columns: 72vw;
+    gap: 14px;
+    padding-left: 20px; padding-right: 20px;
+    scroll-padding-left: 20px;
+  }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.001ms !important; transition: none !important; } }
 
