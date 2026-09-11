@@ -26,6 +26,18 @@
     return i && typeof i.id === "string" && typeof i.price === "number" && i.qty > 0;
   }
 
+  /* Ids marked sold out in the markup — the buy button or the variant option carries
+     data-sold-out. Keeping it in the HTML means one place to update when stock lands. */
+  function soldOutIds() {
+    var out = {};
+    var els = document.querySelectorAll("[data-sold-out]");
+    for (var i = 0; i < els.length; i++) {
+      var id = els[i].getAttribute("data-item-id") || els[i].value;
+      if (id) out[id] = true;
+    }
+    return out;
+  }
+
   function load() {
     try {
       var raw = window.localStorage.getItem(STORAGE_KEY);
@@ -34,6 +46,12 @@
     } catch (e) {
       items = [];
     }
+    /* Drop anything that sold out since the basket was saved, so a returning
+       customer doesn't reach checkout only to be refused. */
+    var gone = soldOutIds();
+    var before = items.length;
+    items = items.filter(function (i) { return !gone[i.id]; });
+    if (items.length !== before) save();
   }
 
   function save() {

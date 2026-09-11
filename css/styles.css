@@ -187,6 +187,13 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate
 /* Sits opposite "Best value" so the two flags never collide, even on a phone. */
 .product-badge--free { left: auto; right: 12px; background: var(--sale); }
 
+/* Muted grey, not the deal red — this is an absence, not an offer. */
+.product-badge--sold { background: var(--ink-dim); }
+.product-card--sold .product-media img { opacity: 0.45; }
+.product-card--sold:hover .product-media img { transform: none; }
+.product-card--sold .product-body h3,
+.product-card--sold .product-price { color: var(--ink-dim); }
+
 .product-body { padding: 16px 2px 0; display: flex; flex-direction: column; gap: 6px; flex: 1; }
 .product-body h3 { font-size: 0.92rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em; }
 .product-blurb { margin: 0; color: var(--ink-dim); font-size: 0.85rem; flex: 1; }

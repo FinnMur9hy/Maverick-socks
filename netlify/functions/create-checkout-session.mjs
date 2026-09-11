@@ -76,6 +76,12 @@ export default async function handler(request) {
       return json({ error: "Unknown product: " + (entry && entry.id) }, 400);
     }
 
+    /* The page hides sold-out items, but a basket saved before they sold out would
+       still carry them. This is the check that actually prevents overselling. */
+    if (product.soldOut) {
+      return json({ error: product.name + " is sold out." }, 409);
+    }
+
     const qty = Math.floor(Number(entry.qty));
     if (!Number.isFinite(qty) || qty < 1) {
       return json({ error: "Invalid quantity for " + product.name }, 400);

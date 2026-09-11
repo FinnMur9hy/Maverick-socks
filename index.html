@@ -131,8 +131,9 @@
             </div>
           </article>
 
-          <article class="product-card">
+          <article class="product-card product-card--sold">
             <div class="product-media">
+              <span class="product-badge product-badge--sold">Sold out</span>
               <img src="assets/product-black.jpg?v=2" alt="Black Maverick grip socks with packaging and the grip sole" loading="lazy" width="600" height="600" />
             </div>
             <div class="product-body">
@@ -140,14 +141,16 @@
               <p class="product-blurb">Same grip, blacked out. Woven logo cuff and silicone grips inside and out.</p>
               <div class="product-foot">
                 <span class="product-price">&pound;12.99</span>
-                <button type="button" class="btn btn--dark buy-btn" data-add-to-cart
+                <!-- data-sold-out is the single marker: it disables the button here, and
+                     cart.js reads it to purge any saved basket still holding this item. -->
+                <button type="button" class="btn btn--dark buy-btn" data-add-to-cart disabled data-sold-out
                   data-item-id="mav-grip-black"
                   data-item-name="Maverick Grip Socks &mdash; Black"
                   data-item-price="12.99"
                   data-item-url="/"
                   data-item-description="Same grip, blacked out. Woven logo cuff and silicone grips inside and out."
                   data-item-image="https://mavericksportswear.com/assets/product-black.jpg"
-                  data-item-max-quantity="10">Add to cart</button>
+                  data-item-max-quantity="10">Sold out</button>
               </div>
             </div>
           </article>
@@ -170,9 +173,9 @@
               <select class="variant-select" id="packMix">
                 <option value="" selected disabled>Choose your mix&hellip;</option>
                 <option value="mav-grip-3pack-3w" data-name="Maverick Grip Socks &mdash; 3-Pack (3 White)">3 &times; White</option>
-                <option value="mav-grip-3pack-2w1b" data-name="Maverick Grip Socks &mdash; 3-Pack (2 White, 1 Black)">2 &times; White, 1 &times; Black</option>
-                <option value="mav-grip-3pack-1w2b" data-name="Maverick Grip Socks &mdash; 3-Pack (1 White, 2 Black)">1 &times; White, 2 &times; Black</option>
-                <option value="mav-grip-3pack-3b" data-name="Maverick Grip Socks &mdash; 3-Pack (3 Black)">3 &times; Black</option>
+                <option value="mav-grip-3pack-2w1b" data-name="Maverick Grip Socks &mdash; 3-Pack (2 White, 1 Black)" disabled data-sold-out>2 &times; White, 1 &times; Black &mdash; sold out</option>
+                <option value="mav-grip-3pack-1w2b" data-name="Maverick Grip Socks &mdash; 3-Pack (1 White, 2 Black)" disabled data-sold-out>1 &times; White, 2 &times; Black &mdash; sold out</option>
+                <option value="mav-grip-3pack-3b" data-name="Maverick Grip Socks &mdash; 3-Pack (3 Black)" disabled data-sold-out>3 &times; Black &mdash; sold out</option>
               </select>
 
               <div class="product-foot">

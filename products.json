@@ -11,7 +11,8 @@
     "mav-grip-black": {
       "name": "Maverick Grip Socks — Black",
       "price": 1299,
-      "image": "https://mavericksportswear.com/assets/product-black.jpg"
+      "image": "https://mavericksportswear.com/assets/product-black.jpg",
+      "soldOut": true
     },
     "mav-grip-3pack-3w": {
       "name": "Maverick Grip Socks — 3-Pack (3 White)",
@@ -21,17 +22,20 @@
     "mav-grip-3pack-2w1b": {
       "name": "Maverick Grip Socks — 3-Pack (2 White, 1 Black)",
       "price": 3399,
-      "image": "https://mavericksportswear.com/assets/product-3pack.jpg"
+      "image": "https://mavericksportswear.com/assets/product-3pack.jpg",
+      "soldOut": true
     },
     "mav-grip-3pack-1w2b": {
       "name": "Maverick Grip Socks — 3-Pack (1 White, 2 Black)",
       "price": 3399,
-      "image": "https://mavericksportswear.com/assets/product-3pack.jpg"
+      "image": "https://mavericksportswear.com/assets/product-3pack.jpg",
+      "soldOut": true
     },
     "mav-grip-3pack-3b": {
       "name": "Maverick Grip Socks — 3-Pack (3 Black)",
       "price": 3399,
-      "image": "https://mavericksportswear.com/assets/product-3pack.jpg"
+      "image": "https://mavericksportswear.com/assets/product-3pack.jpg",
+      "soldOut": true
     },
     "mav-grip-3pack": {
       "name": "Maverick Grip Socks — 3-Pack",
